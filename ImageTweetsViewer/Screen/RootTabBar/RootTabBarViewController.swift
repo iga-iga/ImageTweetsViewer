@@ -15,6 +15,7 @@ final class RootTabBarViewController: UITabBarController {
     private func commonInit() {
         self.setViewControllers(
             [
+                SearchViewController.createViewController()
             ],
             animated: false
         )

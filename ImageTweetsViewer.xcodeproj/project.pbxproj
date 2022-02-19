@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C825D16927C0D871007D1A16 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C825D16827C0D871007D1A16 /* Array+Extensions.swift */; };
 		C8B0EC3627C08D2F00A03B36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0EC3527C08D2F00A03B36 /* AppDelegate.swift */; };
 		C8B0EC3827C08D2F00A03B36 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0EC3727C08D2F00A03B36 /* SceneDelegate.swift */; };
 		C8B0EC3A27C08D2F00A03B36 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0EC3927C08D2F00A03B36 /* ViewController.swift */; };
@@ -17,6 +18,10 @@
 		C8B0EC5727C08D3100A03B36 /* ImageTweetsViewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0EC5627C08D3100A03B36 /* ImageTweetsViewerUITests.swift */; };
 		C8B0EC5927C08D3100A03B36 /* ImageTweetsViewerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0EC5827C08D3100A03B36 /* ImageTweetsViewerUITestsLaunchTests.swift */; };
 		C8B0EC6827C09AE700A03B36 /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0EC6727C09AE700A03B36 /* RootTabBarViewController.swift */; };
+		C8B0EC6B27C09B3200A03B36 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0EC6A27C09B3200A03B36 /* SearchViewController.swift */; };
+		C8B0EC6D27C09B7F00A03B36 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8B0EC6C27C09B7F00A03B36 /* SearchViewController.xib */; };
+		C8B0EC6F27C0A84800A03B36 /* ImageCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8B0EC6E27C0A84800A03B36 /* ImageCollectionViewController.xib */; };
+		C8B0EC7127C0A85500A03B36 /* ImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0EC7027C0A85500A03B36 /* ImageCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C825D16827C0D871007D1A16 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		C8B0EC3227C08D2F00A03B36 /* ImageTweetsViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageTweetsViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B0EC3527C08D2F00A03B36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8B0EC3727C08D2F00A03B36 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +57,10 @@
 		C8B0EC5627C08D3100A03B36 /* ImageTweetsViewerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTweetsViewerUITests.swift; sourceTree = "<group>"; };
 		C8B0EC5827C08D3100A03B36 /* ImageTweetsViewerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTweetsViewerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C8B0EC6727C09AE700A03B36 /* RootTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
+		C8B0EC6A27C09B3200A03B36 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		C8B0EC6C27C09B7F00A03B36 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		C8B0EC6E27C0A84800A03B36 /* ImageCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewController.xib; sourceTree = "<group>"; };
+		C8B0EC7027C0A85500A03B36 /* ImageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C825D16727C0D845007D1A16 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C825D16827C0D871007D1A16 /* Array+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		C8B0EC2927C08D2E00A03B36 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +119,7 @@
 		C8B0EC3427C08D2F00A03B36 /* ImageTweetsViewer */ = {
 			isa = PBXGroup;
 			children = (
+				C825D16727C0D845007D1A16 /* Extensions */,
 				C8B0EC6527C09AC000A03B36 /* Screen */,
 				C8B0EC3527C08D2F00A03B36 /* AppDelegate.swift */,
 				C8B0EC3727C08D2F00A03B36 /* SceneDelegate.swift */,
@@ -133,6 +152,7 @@
 		C8B0EC6527C09AC000A03B36 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				C8B0EC6927C09B1500A03B36 /* Search */,
 				C8B0EC6627C09ACD00A03B36 /* RootTabBar */,
 			);
 			path = Screen;
@@ -144,6 +164,17 @@
 				C8B0EC6727C09AE700A03B36 /* RootTabBarViewController.swift */,
 			);
 			path = RootTabBar;
+			sourceTree = "<group>";
+		};
+		C8B0EC6927C09B1500A03B36 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				C8B0EC7027C0A85500A03B36 /* ImageCollectionViewController.swift */,
+				C8B0EC6E27C0A84800A03B36 /* ImageCollectionViewController.xib */,
+				C8B0EC6A27C09B3200A03B36 /* SearchViewController.swift */,
+				C8B0EC6C27C09B7F00A03B36 /* SearchViewController.xib */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,7 +282,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8B0EC4227C08D3000A03B36 /* LaunchScreen.storyboard in Resources */,
+				C8B0EC6F27C0A84800A03B36 /* ImageCollectionViewController.xib in Resources */,
 				C8B0EC3F27C08D3000A03B36 /* Assets.xcassets in Resources */,
+				C8B0EC6D27C09B7F00A03B36 /* SearchViewController.xib in Resources */,
 				C8B0EC3D27C08D2F00A03B36 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,7 +310,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8B0EC7127C0A85500A03B36 /* ImageCollectionViewController.swift in Sources */,
+				C8B0EC6B27C09B3200A03B36 /* SearchViewController.swift in Sources */,
 				C8B0EC6827C09AE700A03B36 /* RootTabBarViewController.swift in Sources */,
+				C825D16927C0D871007D1A16 /* Array+Extensions.swift in Sources */,
 				C8B0EC3A27C08D2F00A03B36 /* ViewController.swift in Sources */,
 				C8B0EC3627C08D2F00A03B36 /* AppDelegate.swift in Sources */,
 				C8B0EC3827C08D2F00A03B36 /* SceneDelegate.swift in Sources */,
