@@ -16,6 +16,7 @@
 		C8B0EC4D27C08D3100A03B36 /* ImageTweetsViewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0EC4C27C08D3100A03B36 /* ImageTweetsViewerTests.swift */; };
 		C8B0EC5727C08D3100A03B36 /* ImageTweetsViewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0EC5627C08D3100A03B36 /* ImageTweetsViewerUITests.swift */; };
 		C8B0EC5927C08D3100A03B36 /* ImageTweetsViewerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0EC5827C08D3100A03B36 /* ImageTweetsViewerUITestsLaunchTests.swift */; };
+		C8B0EC6827C09AE700A03B36 /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0EC6727C09AE700A03B36 /* RootTabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		C8B0EC5227C08D3100A03B36 /* ImageTweetsViewerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageTweetsViewerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B0EC5627C08D3100A03B36 /* ImageTweetsViewerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTweetsViewerUITests.swift; sourceTree = "<group>"; };
 		C8B0EC5827C08D3100A03B36 /* ImageTweetsViewerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTweetsViewerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C8B0EC6727C09AE700A03B36 /* RootTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		C8B0EC3427C08D2F00A03B36 /* ImageTweetsViewer */ = {
 			isa = PBXGroup;
 			children = (
+				C8B0EC6527C09AC000A03B36 /* Screen */,
 				C8B0EC3527C08D2F00A03B36 /* AppDelegate.swift */,
 				C8B0EC3727C08D2F00A03B36 /* SceneDelegate.swift */,
 				C8B0EC3927C08D2F00A03B36 /* ViewController.swift */,
@@ -125,6 +128,22 @@
 				C8B0EC5827C08D3100A03B36 /* ImageTweetsViewerUITestsLaunchTests.swift */,
 			);
 			path = ImageTweetsViewerUITests;
+			sourceTree = "<group>";
+		};
+		C8B0EC6527C09AC000A03B36 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				C8B0EC6627C09ACD00A03B36 /* RootTabBar */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		C8B0EC6627C09ACD00A03B36 /* RootTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				C8B0EC6727C09AE700A03B36 /* RootTabBarViewController.swift */,
+			);
+			path = RootTabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8B0EC6827C09AE700A03B36 /* RootTabBarViewController.swift in Sources */,
 				C8B0EC3A27C08D2F00A03B36 /* ViewController.swift in Sources */,
 				C8B0EC3627C08D2F00A03B36 /* AppDelegate.swift in Sources */,
 				C8B0EC3827C08D2F00A03B36 /* SceneDelegate.swift in Sources */,
