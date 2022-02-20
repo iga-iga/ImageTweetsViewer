@@ -20,7 +20,7 @@ public struct GetSearchRequest: BaseRequest {
             query: String,
             expansions: String,
             mediaFields: String,
-            maxResults: String = "100"
+            maxResults: String = "10"
         ) {
             parameters = [
                 "query" : query,

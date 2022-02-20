@@ -1,4 +1,5 @@
 import UIKit
+import Kingfisher
 
 final class ImageCollectionViewCell: UICollectionViewCell {
 
@@ -9,8 +10,8 @@ final class ImageCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
-    func setup() {
-        self.imageView.layer.borderColor = CGColor.init(red: 1, green: 0, blue: 0, alpha: 1)
-        self.imageView.layer.borderWidth = 2
+    func setup(url: String) {
+        guard let url = URL(string: url) else { return }
+        self.imageView.kf.setImage(with: url)
     }
 }

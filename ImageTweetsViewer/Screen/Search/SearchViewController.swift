@@ -13,12 +13,10 @@ final class SearchViewController: UIViewController {
     )
 
     private var controllers: [UIViewController] = [
-        ImageCollectionViewController.createViewController(index: 1),
-        ImageCollectionViewController.createViewController(index: 2),
-        ImageCollectionViewController.createViewController(index: 3)
+        ImageCollectionViewController.createViewController(index: 1)
     ]
 
-    private var segmentedItems = ["1", "2", "3"]
+    private var segmentedItems = ["1"]
 
     private var currentIndex = 0
 

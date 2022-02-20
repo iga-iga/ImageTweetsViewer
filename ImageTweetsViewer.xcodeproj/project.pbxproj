@@ -43,6 +43,7 @@
 		C8C24F5027C232A8005E9E25 /* TweetsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C24F4F27C232A8005E9E25 /* TweetsRepository.swift */; };
 		C8C24F5227C24087005E9E25 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C24F5127C24087005E9E25 /* DataManager.swift */; };
 		C8C24F5527C24609005E9E25 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C8C24F5427C24609005E9E25 /* Kingfisher */; };
+		C8C24F5727C24667005E9E25 /* ImageCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C24F5627C24667005E9E25 /* ImageCollectionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		C8C24F4C27C2317B005E9E25 /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
 		C8C24F4F27C232A8005E9E25 /* TweetsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetsRepository.swift; sourceTree = "<group>"; };
 		C8C24F5127C24087005E9E25 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		C8C24F5627C24667005E9E25 /* ImageCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +252,7 @@
 				C825D16F27C0EC67007D1A16 /* ImageCollectionViewCell.xib */,
 				C8B0EC7027C0A85500A03B36 /* ImageCollectionViewController.swift */,
 				C8B0EC6E27C0A84800A03B36 /* ImageCollectionViewController.xib */,
+				C8C24F5627C24667005E9E25 /* ImageCollectionViewModel.swift */,
 				C8B0EC6A27C09B3200A03B36 /* SearchViewController.swift */,
 				C8B0EC6C27C09B7F00A03B36 /* SearchViewController.xib */,
 			);
@@ -424,6 +427,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C825D17027C0EC67007D1A16 /* ImageCollectionViewCell.swift in Sources */,
+				C8C24F5727C24667005E9E25 /* ImageCollectionViewModel.swift in Sources */,
 				C8C24F5227C24087005E9E25 /* DataManager.swift in Sources */,
 				C8B0EC7127C0A85500A03B36 /* ImageCollectionViewController.swift in Sources */,
 				C8C24F4827C22F45005E9E25 /* DomainObjectModel.swift in Sources */,
