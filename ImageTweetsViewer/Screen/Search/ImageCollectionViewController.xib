@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImageCollectionViewController" customModule="ImageTweetsViewer" customModuleProvider="target">
             <connections>
-                <outlet property="label" destination="6SN-JC-3AE" id="amk-RF-RF1"/>
+                <outlet property="collectionView" destination="xCZ-Ab-tXP" id="tvN-B9-oIU"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Gam-E3-WAB"/>
             </connections>
         </placeholder>
@@ -20,20 +20,26 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SN-JC-3AE">
-                    <rect key="frame" x="186" y="437.5" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xCZ-Ab-tXP">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Kbf-kJ-MyA">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="6SN-JC-3AE" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="dxg-fT-FpG"/>
-                <constraint firstItem="6SN-JC-3AE" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="rF4-gS-EY1"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="xCZ-Ab-tXP" secondAttribute="trailing" id="B34-2L-DVK"/>
+                <constraint firstItem="xCZ-Ab-tXP" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="CkM-jv-NAT"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="xCZ-Ab-tXP" secondAttribute="bottom" id="bgI-Um-zcS"/>
+                <constraint firstItem="xCZ-Ab-tXP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="dU3-Ep-fH4"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="121"/>
+            <point key="canvasLocation" x="137.68115942028987" y="120.53571428571428"/>
         </view>
     </objects>
     <resources>

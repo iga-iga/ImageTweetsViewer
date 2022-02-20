@@ -43,11 +43,21 @@ final class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.setupViews()
+    }
+    
+    private func setupViews() {
         // Remove the top and bottom lines for searchBar
         self.searchBar.backgroundImage = UIImage()
         
         self.view.addSubview(pageViewController.view)
-        self.pageViewController.view.frame = self.pageContainerView.frame
+        self.pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.pageViewController.view.topAnchor.constraint(equalTo: self.pageContainerView.topAnchor),
+            self.pageViewController.view.leftAnchor.constraint(equalTo: self.pageContainerView.leftAnchor),
+            self.pageViewController.view.rightAnchor.constraint(equalTo: self.pageContainerView.rightAnchor),
+            self.pageViewController.view.bottomAnchor.constraint(equalTo: self.pageContainerView.bottomAnchor)
+        ])
         self.pageViewController.setViewControllers(
             [self.controllers.first!],
             direction: .forward,
