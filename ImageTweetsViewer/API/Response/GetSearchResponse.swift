@@ -1,6 +1,6 @@
 struct GetSearchResponse: BaseResponse {
     var data: [SearchData]
-    var includes: Includes
+    var includes: Includes?
 }
 
 extension GetSearchResponse {
@@ -10,10 +10,10 @@ extension GetSearchResponse {
     }
     
     struct Includes: Codable, Equatable {
-        let media: [Media]
+        let media: [Media]?
     }
     
     struct Media: Codable, Equatable {
-        let url: String
+        let url: String?
     }
 }
