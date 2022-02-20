@@ -12,7 +12,7 @@ class ImageTweetsViewerTests: XCTestCase {
         let mediaFields = "url"
         let expectation = self.expectation(description: "testSearchSuccess")
 
-        SearchRequest(
+        GetSearchRequest(
             parameter: .init(
                 query: query,
                 expansions: expansions,

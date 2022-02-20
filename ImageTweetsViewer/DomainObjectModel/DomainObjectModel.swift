@@ -1,0 +1,1 @@
+protocol DomainObjectModel: Equatable {}

@@ -36,6 +36,12 @@
 		C8C24F3E27C216E4005E9E25 /* GetSearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C24F3C27C216E4005E9E25 /* GetSearchRequest.swift */; };
 		C8C24F4227C2207D005E9E25 /* GetSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C24F4127C2207D005E9E25 /* GetSearchResponse.swift */; };
 		C8C24F4327C2207D005E9E25 /* GetSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C24F4127C2207D005E9E25 /* GetSearchResponse.swift */; };
+		C8C24F4627C22D47005E9E25 /* TweetsDOM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C24F4527C22D47005E9E25 /* TweetsDOM.swift */; };
+		C8C24F4827C22F45005E9E25 /* DomainObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C24F4727C22F45005E9E25 /* DomainObjectModel.swift */; };
+		C8C24F4B27C2300E005E9E25 /* TweetsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C24F4A27C2300E005E9E25 /* TweetsMapper.swift */; };
+		C8C24F4D27C2317B005E9E25 /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C24F4C27C2317B005E9E25 /* Mapper.swift */; };
+		C8C24F5027C232A8005E9E25 /* TweetsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C24F4F27C232A8005E9E25 /* TweetsRepository.swift */; };
+		C8C24F5227C24087005E9E25 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C24F5127C24087005E9E25 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +89,12 @@
 		C8B0EC7027C0A85500A03B36 /* ImageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewController.swift; sourceTree = "<group>"; };
 		C8C24F3C27C216E4005E9E25 /* GetSearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSearchRequest.swift; sourceTree = "<group>"; };
 		C8C24F4127C2207D005E9E25 /* GetSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSearchResponse.swift; sourceTree = "<group>"; };
+		C8C24F4527C22D47005E9E25 /* TweetsDOM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetsDOM.swift; sourceTree = "<group>"; };
+		C8C24F4727C22F45005E9E25 /* DomainObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainObjectModel.swift; sourceTree = "<group>"; };
+		C8C24F4A27C2300E005E9E25 /* TweetsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetsMapper.swift; sourceTree = "<group>"; };
+		C8C24F4C27C2317B005E9E25 /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
+		C8C24F4F27C232A8005E9E25 /* TweetsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetsRepository.swift; sourceTree = "<group>"; };
+		C8C24F5127C24087005E9E25 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,11 +190,14 @@
 			isa = PBXGroup;
 			children = (
 				C825D17527C211F9007D1A16 /* API */,
-				C825D16727C0D845007D1A16 /* Extensions */,
+				C8C24F4427C22CB5005E9E25 /* DomainObjectModel */,
+				C8C24F4927C22FED005E9E25 /* Mapper */,
+				C8C24F4E27C2327D005E9E25 /* Repository */,
 				C825D17C27C21279007D1A16 /* Resource */,
 				C8B0EC6527C09AC000A03B36 /* Screen */,
 				C8B0EC3527C08D2F00A03B36 /* AppDelegate.swift */,
 				C8B0EC3E27C08D3000A03B36 /* Assets.xcassets */,
+				C825D16727C0D845007D1A16 /* Extensions */,
 				C8B0EC4327C08D3000A03B36 /* Info.plist */,
 				C8B0EC4027C08D3000A03B36 /* LaunchScreen.storyboard */,
 				C8B0EC3B27C08D2F00A03B36 /* Main.storyboard */,
@@ -237,6 +252,33 @@
 				C8B0EC6C27C09B7F00A03B36 /* SearchViewController.xib */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		C8C24F4427C22CB5005E9E25 /* DomainObjectModel */ = {
+			isa = PBXGroup;
+			children = (
+				C8C24F4727C22F45005E9E25 /* DomainObjectModel.swift */,
+				C8C24F4527C22D47005E9E25 /* TweetsDOM.swift */,
+			);
+			path = DomainObjectModel;
+			sourceTree = "<group>";
+		};
+		C8C24F4927C22FED005E9E25 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				C8C24F4C27C2317B005E9E25 /* Mapper.swift */,
+				C8C24F4A27C2300E005E9E25 /* TweetsMapper.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		C8C24F4E27C2327D005E9E25 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				C8C24F5127C24087005E9E25 /* DataManager.swift */,
+				C8C24F4F27C232A8005E9E25 /* TweetsRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,19 +416,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				C825D17027C0EC67007D1A16 /* ImageCollectionViewCell.swift in Sources */,
+				C8C24F5227C24087005E9E25 /* DataManager.swift in Sources */,
 				C8B0EC7127C0A85500A03B36 /* ImageCollectionViewController.swift in Sources */,
+				C8C24F4827C22F45005E9E25 /* DomainObjectModel.swift in Sources */,
 				C8C24F3D27C216E4005E9E25 /* GetSearchRequest.swift in Sources */,
+				C8C24F4D27C2317B005E9E25 /* Mapper.swift in Sources */,
 				C8B0EC6B27C09B3200A03B36 /* SearchViewController.swift in Sources */,
 				C8B0EC6827C09AE700A03B36 /* RootTabBarViewController.swift in Sources */,
 				C825D16927C0D871007D1A16 /* Array+Extensions.swift in Sources */,
 				C825D17B27C2124E007D1A16 /* BaseResponse.swift in Sources */,
 				C8B0EC3A27C08D2F00A03B36 /* ViewController.swift in Sources */,
 				C825D18027C212E2007D1A16 /* DateFormatter+Entensions.swift in Sources */,
+				C8C24F5027C232A8005E9E25 /* TweetsRepository.swift in Sources */,
 				C8B0EC3627C08D2F00A03B36 /* AppDelegate.swift in Sources */,
 				C8B0EC3827C08D2F00A03B36 /* SceneDelegate.swift in Sources */,
 				C825D17827C21221007D1A16 /* BaseRequest.swift in Sources */,
 				C8C24F4227C2207D005E9E25 /* GetSearchResponse.swift in Sources */,
 				C825D17E27C2128A007D1A16 /* Tokens.swift in Sources */,
+				C8C24F4B27C2300E005E9E25 /* TweetsMapper.swift in Sources */,
+				C8C24F4627C22D47005E9E25 /* TweetsDOM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
