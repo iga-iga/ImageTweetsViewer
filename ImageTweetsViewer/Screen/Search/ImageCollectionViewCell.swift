@@ -14,6 +14,12 @@ final class ImageCollectionViewCell: UICollectionViewCell {
     
     func setup(url: String) {
         guard let url = URL(string: url) else { return }
+
         self.imageView.kf.setImage(with: url, placeholder: Image.loadingImage)
+        self.imageView.contentMode = .scaleAspectFill
+        self.imageView.clipsToBounds = true
+
+        self.imageView.layer.borderColor = .init(red: 0, green: 0, blue: 0, alpha: 1)
+        self.imageView.layer.borderWidth = 1
     }
 }
