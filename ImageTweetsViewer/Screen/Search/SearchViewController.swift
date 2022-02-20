@@ -49,6 +49,8 @@ final class SearchViewController: UIViewController {
     private func setupViews() {
         // Remove the top and bottom lines for searchBar
         self.searchBar.backgroundImage = UIImage()
+        self.searchBar.delegate = self
+        self.searchBar.enablesReturnKeyAutomatically = false
         
         self.view.addSubview(pageViewController.view)
         self.pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
@@ -145,5 +147,14 @@ extension SearchViewController: UIPageViewControllerDelegate {
         }
         self.segmentedControl.selectedSegmentIndex = currentIndex
         self.currentIndex = currentIndex
+    }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+        
+        let viewController = self.controllers.first as? ImageCollectionViewController
+        viewController?.viewModel.search(text: searchBar.text ?? "")
     }
 }

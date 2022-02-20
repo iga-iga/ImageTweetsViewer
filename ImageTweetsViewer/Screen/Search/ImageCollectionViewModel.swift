@@ -6,9 +6,9 @@ class ImageCollectionViewModel {
     
     @Published var urls: [String] = []
     
-    func search() {
+    func search(text: String) {
         repository.getTweets(
-            query: "ラーメン"
+            query: text
         ) { tweets in
             self.urls = tweets.urls
         }

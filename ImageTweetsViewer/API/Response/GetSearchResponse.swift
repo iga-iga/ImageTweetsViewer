@@ -1,5 +1,5 @@
 struct GetSearchResponse: BaseResponse {
-    var data: [SearchData]
+    var data: [SearchData]?
     var includes: Includes?
 }
 

@@ -5,7 +5,7 @@ final class ImageCollectionViewController: UIViewController {
 
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    private let viewModel = ImageCollectionViewModel()
+    let viewModel = ImageCollectionViewModel()
     private var bindings = Set<AnyCancellable>()
 
     static func createViewController(index: Int) -> ImageCollectionViewController {
@@ -28,7 +28,6 @@ final class ImageCollectionViewController: UIViewController {
     private func commonInit() {
         self.title = ""
         self.setupBind()
-        self.viewModel.search()
     }
 
     override func viewWillAppear(_ animated: Bool) {
