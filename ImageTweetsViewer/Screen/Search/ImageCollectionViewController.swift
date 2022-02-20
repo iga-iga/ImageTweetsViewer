@@ -60,8 +60,13 @@ final class ImageCollectionViewController: UIViewController {
         viewModel.$urls
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: {[weak self]_ in
-                guard let self = self else { return }
-                self.collectionView.reloadData()
+                guard
+                    let self = self,
+                    let collectionView = self.collectionView
+                else {
+                    return
+                }
+                collectionView.reloadData()
             })
             .store(in: &bindings)
     }
