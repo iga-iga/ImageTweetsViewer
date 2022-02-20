@@ -108,6 +108,7 @@ extension BaseRequest {
             }
             .decode(type: Response.self, decoder: decoder)
             .mapError { error -> APIError in
+                print("DecodeError: \(error)")
                 return APIError.decode
             }
             .compactMap {
