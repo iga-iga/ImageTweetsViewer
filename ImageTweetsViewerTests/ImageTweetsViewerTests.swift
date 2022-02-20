@@ -1,33 +1,41 @@
-//
-//  ImageTweetsViewerTests.swift
-//  ImageTweetsViewerTests
-//
-//  Created by iga on 2022/02/19.
-//
-
+import Combine
 import XCTest
 @testable import ImageTweetsViewer
 
 class ImageTweetsViewerTests: XCTestCase {
+    
+    private var bindings = Set<AnyCancellable>()
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    func testGetSearch() {
+        let query = "テスト"
+        let expansions = "attachments.media_keys"
+        let mediaFields = "url"
+        let expectation = self.expectation(description: "testSearchSuccess")
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+        SearchRequest(
+            parameter: .init(
+                query: query,
+                expansions: expansions,
+                mediaFields: mediaFields
+            ),
+            component: .init()
+        ).publisher.sink(
+            receiveCompletion: { result in
+                switch result {
+                    case .finished:
+                        expectation.fulfill()
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+                    case .failure:
+                        XCTFail("testSearch failed")
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+                }
+            },
+            receiveValue: { response in
+                XCTAssertTrue(!response.data.isEmpty)
+            }
+        ).store(in: &bindings)
+
+        waitForExpectations(timeout: 20, handler: nil)
     }
 
 }
