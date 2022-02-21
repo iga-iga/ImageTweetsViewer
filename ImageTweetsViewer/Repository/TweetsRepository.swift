@@ -4,9 +4,10 @@ struct TweetData {
 }
 
 struct TweetsRepository {
-    var dataManager = DataManager<GetSearchRequest>()
     
-    mutating func getTweets(
+    private var dataManager = DataManager<GetSearchRequest>()
+
+    mutating func getLatestTweets(
         text: String,
         completion: @escaping ([TweetData]) -> Void
     ) {
@@ -21,16 +22,26 @@ struct TweetsRepository {
                     tweets.append(.init(imageUrls: imageUrls, text: data.text))
                 }
             }
-            
             completion(tweets)
         }
     }
+    
+    //  Invalid query for v2 endpoint
+//    mutating func getPopularTweets(
+//        text: String,
+//        completion: @escaping ([TweetData]) -> Void
+//    ) {
+//        let query = text + " min_faves:10"
+//        self.getTweets(query: query) { dom in
+//            completion(self.map(dom))
+//        }
+//    }
     
     private mutating func getTweets(
         query: String,
         completion: @escaping (TweetsDOM) -> Void
     ) {
-        self.dataManager.request(
+        dataManager.request(
             parameter: .init(
                 query: query,
                 expansions: "attachments.media_keys",

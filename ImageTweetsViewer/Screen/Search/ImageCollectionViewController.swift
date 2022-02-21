@@ -1,4 +1,3 @@
-import Combine
 import UIKit
 
 final class ImageCollectionViewController: UIViewController {
@@ -6,9 +5,8 @@ final class ImageCollectionViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     
     let viewModel = ImageCollectionViewModel()
-    private var bindings = Set<AnyCancellable>()
 
-    static func createViewController(index: Int) -> ImageCollectionViewController {
+    static func createViewController() -> ImageCollectionViewController {
         ImageCollectionViewController(
             nibName: "ImageCollectionViewController",
             bundle: nil
@@ -27,7 +25,6 @@ final class ImageCollectionViewController: UIViewController {
 
     private func commonInit() {
         self.title = ""
-        self.setupBind()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -55,19 +52,10 @@ final class ImageCollectionViewController: UIViewController {
         self.collectionView.collectionViewLayout = layout
     }
     
-    private func setupBind() {
-        viewModel.$urls
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: {[weak self]_ in
-                guard
-                    let self = self,
-                    let collectionView = self.collectionView
-                else {
-                    return
-                }
-                collectionView.reloadData()
-            })
-            .store(in: &bindings)
+    func update(urls: [String]) {
+        self.viewModel.update(urls: urls)
+        guard let collectionView = self.collectionView else { return }
+        collectionView.reloadData()
     }
 }
 

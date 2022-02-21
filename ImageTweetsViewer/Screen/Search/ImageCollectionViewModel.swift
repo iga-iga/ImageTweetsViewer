@@ -2,15 +2,9 @@ import Combine
 
 class ImageCollectionViewModel {
     
-    private var repository = TweetsRepository()
+    private(set) var urls: [String] = []
     
-    @Published var urls: [String] = []
-    
-    func search(text: String) {
-        repository.getTweets(
-            text: text
-        ) { tweets in
-            self.urls = tweets.map { $0.imageUrls.first ?? "" }
-        }
+    func update(urls: [String]) {
+        self.urls = urls
     }
 }
