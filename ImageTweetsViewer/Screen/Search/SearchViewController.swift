@@ -1,3 +1,4 @@
+import Combine
 import UIKit
 
 final class SearchViewController: UIViewController {
@@ -12,15 +13,18 @@ final class SearchViewController: UIViewController {
         options: nil
     )
 
-    private var controllers: [UIViewController] = [
-        ImageCollectionViewController.createViewController(index: 1),
-        ImageCollectionViewController.createViewController(index: 2),
-        ImageCollectionViewController.createViewController(index: 3)
-    ]
+    private let latestImageCollectionVC = ImageCollectionViewController.createViewController()
+    private let popularImageCollectionVC = ImageCollectionViewController.createViewController()
+    private var controllers: [UIViewController] {[
+        self.latestImageCollectionVC,
+        self.popularImageCollectionVC
+    ]}
 
-    private var segmentedItems = ["1", "2", "3"]
+    private var segmentedItems = ["最新", "人気"]
 
     private var currentIndex = 0
+    private let viewModel = SearchViewModel()
+    private var bindings = Set<AnyCancellable>()
 
     static func createViewController() -> SearchViewController {
         SearchViewController.init(nibName: "SearchViewController", bundle: nil)
@@ -38,6 +42,7 @@ final class SearchViewController: UIViewController {
 
     private func commonInit() {
         self.title = "Search"
+        self.setupBind()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +54,8 @@ final class SearchViewController: UIViewController {
     private func setupViews() {
         // Remove the top and bottom lines for searchBar
         self.searchBar.backgroundImage = UIImage()
+        self.searchBar.delegate = self
+        self.searchBar.enablesReturnKeyAutomatically = false
         
         self.view.addSubview(pageViewController.view)
         self.pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
@@ -95,6 +102,16 @@ final class SearchViewController: UIViewController {
         )
 
         self.currentIndex = index
+    }
+    
+    private func setupBind() {
+        viewModel.$latestUrls
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: {[weak self] urls in
+                guard let self = self else { return }
+                self.latestImageCollectionVC.update(urls: urls)
+            })
+            .store(in: &bindings)
     }
 }
 
@@ -145,5 +162,28 @@ extension SearchViewController: UIPageViewControllerDelegate {
         }
         self.segmentedControl.selectedSegmentIndex = currentIndex
         self.currentIndex = currentIndex
+    }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+        
+        let viewController = SearchDetailViewController.createViewController()
+        
+        viewController.$searchText
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: {[weak self] searchText in
+                guard
+                    let self = self,
+                    !searchText.isEmpty
+                else {
+                    return
+                }
+                self.viewModel.search(text: searchText)
+            })
+            .store(in: &bindings)
+        
+        self.present(viewController, animated: false)
     }
 }

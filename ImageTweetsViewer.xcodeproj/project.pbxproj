@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C809AAD127C37F1C001E657A /* SearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C809AAD027C37F1C001E657A /* SearchDetailViewController.swift */; };
+		C809AAD327C37F44001E657A /* SearchDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C809AAD227C37F44001E657A /* SearchDetailViewController.xib */; };
+		C809AAD727C3836D001E657A /* SearchDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C809AAD627C3836D001E657A /* SearchDetailViewModel.swift */; };
 		C825D16927C0D871007D1A16 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C825D16827C0D871007D1A16 /* Array+Extensions.swift */; };
 		C825D17027C0EC67007D1A16 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C825D16E27C0EC67007D1A16 /* ImageCollectionViewCell.swift */; };
 		C825D17127C0EC67007D1A16 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C825D16F27C0EC67007D1A16 /* ImageCollectionViewCell.xib */; };
@@ -45,6 +48,7 @@
 		C8C24F5227C24087005E9E25 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C24F5127C24087005E9E25 /* DataManager.swift */; };
 		C8C24F5527C24609005E9E25 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C8C24F5427C24609005E9E25 /* Kingfisher */; };
 		C8C24F5727C24667005E9E25 /* ImageCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C24F5627C24667005E9E25 /* ImageCollectionViewModel.swift */; };
+		C8F8B1DF27C34D93009C89E3 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F8B1DE27C34D93009C89E3 /* SearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +69,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C809AAD027C37F1C001E657A /* SearchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailViewController.swift; sourceTree = "<group>"; };
+		C809AAD227C37F44001E657A /* SearchDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchDetailViewController.xib; sourceTree = "<group>"; };
+		C809AAD627C3836D001E657A /* SearchDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailViewModel.swift; sourceTree = "<group>"; };
 		C825D16827C0D871007D1A16 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		C825D16E27C0EC67007D1A16 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		C825D16F27C0EC67007D1A16 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -100,6 +107,7 @@
 		C8C24F4F27C232A8005E9E25 /* TweetsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetsRepository.swift; sourceTree = "<group>"; };
 		C8C24F5127C24087005E9E25 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C8C24F5627C24667005E9E25 /* ImageCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewModel.swift; sourceTree = "<group>"; };
+		C8F8B1DE27C34D93009C89E3 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +136,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C809AACF27C37EF1001E657A /* SearchDetail */ = {
+			isa = PBXGroup;
+			children = (
+				C809AAD027C37F1C001E657A /* SearchDetailViewController.swift */,
+				C809AAD227C37F44001E657A /* SearchDetailViewController.xib */,
+				C809AAD627C3836D001E657A /* SearchDetailViewModel.swift */,
+			);
+			path = SearchDetail;
+			sourceTree = "<group>";
+		};
 		C825D16727C0D845007D1A16 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				C8B0EC6927C09B1500A03B36 /* Search */,
+				C809AACF27C37EF1001E657A /* SearchDetail */,
 				C8B0EC6627C09ACD00A03B36 /* RootTabBar */,
 			);
 			path = Screen;
@@ -258,6 +277,7 @@
 				C8C24F5627C24667005E9E25 /* ImageCollectionViewModel.swift */,
 				C8B0EC6A27C09B3200A03B36 /* SearchViewController.swift */,
 				C8B0EC6C27C09B7F00A03B36 /* SearchViewController.xib */,
+				C8F8B1DE27C34D93009C89E3 /* SearchViewModel.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -399,6 +419,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C809AAD327C37F44001E657A /* SearchDetailViewController.xib in Resources */,
 				C8B0EC4227C08D3000A03B36 /* LaunchScreen.storyboard in Resources */,
 				C825D17127C0EC67007D1A16 /* ImageCollectionViewCell.xib in Resources */,
 				C8B0EC6F27C0A84800A03B36 /* ImageCollectionViewController.xib in Resources */,
@@ -443,6 +464,7 @@
 				C825D17B27C2124E007D1A16 /* BaseResponse.swift in Sources */,
 				C8B0EC3A27C08D2F00A03B36 /* ViewController.swift in Sources */,
 				C825D18027C212E2007D1A16 /* DateFormatter+Entensions.swift in Sources */,
+				C8F8B1DF27C34D93009C89E3 /* SearchViewModel.swift in Sources */,
 				C8C24F5027C232A8005E9E25 /* TweetsRepository.swift in Sources */,
 				C8B0EC3627C08D2F00A03B36 /* AppDelegate.swift in Sources */,
 				C8B0EC3827C08D2F00A03B36 /* SceneDelegate.swift in Sources */,
@@ -450,6 +472,8 @@
 				C8C24F4227C2207D005E9E25 /* GetSearchResponse.swift in Sources */,
 				C825D17E27C2128A007D1A16 /* Tokens.swift in Sources */,
 				C8C24F4B27C2300E005E9E25 /* TweetsMapper.swift in Sources */,
+				C809AAD727C3836D001E657A /* SearchDetailViewModel.swift in Sources */,
+				C809AAD127C37F1C001E657A /* SearchDetailViewController.swift in Sources */,
 				C8C24F4627C22D47005E9E25 /* TweetsDOM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
