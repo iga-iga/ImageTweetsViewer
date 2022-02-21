@@ -43,7 +43,7 @@ struct TweetsRepository {
     ) {
         dataManager.request(
             parameter: .init(
-                query: query,
+                query: query + " has:images",
                 expansions: "attachments.media_keys",
                 mediaFields: "url"
             ),
