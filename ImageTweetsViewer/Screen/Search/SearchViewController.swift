@@ -166,9 +166,24 @@ extension SearchViewController: UIPageViewControllerDelegate {
 }
 
 extension SearchViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
         
-        self.viewModel.search(text: searchBar.text ?? "")
+        let viewController = SearchDetailViewController.createViewController()
+        
+        viewController.$searchText
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: {[weak self] searchText in
+                guard
+                    let self = self,
+                    !searchText.isEmpty
+                else {
+                    return
+                }
+                self.viewModel.search(text: searchText)
+            })
+            .store(in: &bindings)
+        
+        self.present(viewController, animated: false)
     }
 }
