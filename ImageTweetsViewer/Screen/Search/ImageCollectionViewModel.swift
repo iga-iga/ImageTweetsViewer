@@ -8,9 +8,9 @@ class ImageCollectionViewModel {
     
     func search(text: String) {
         repository.getTweets(
-            query: text
+            text: text
         ) { tweets in
-            self.urls = tweets.urls
+            self.urls = tweets.map { $0.imageUrls.first ?? "" }
         }
     }
 }

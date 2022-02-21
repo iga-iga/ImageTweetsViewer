@@ -1,11 +1,17 @@
 struct TweetsDOM: DomainObjectModel {
-    var urls: [String]
-    var data: [TweetsDOM.Data]
+    var images: [ImageData]
+    var data: [TweetData]
 }
 
 extension TweetsDOM {
-    struct Data: Equatable {
+    struct ImageData: Equatable {
+        var url: String
+        var mediaKey: String
+    }
+    
+    struct TweetData: Equatable {
         var id: String
         var text: String
+        var mediaKeys: [String]
     }
 }
