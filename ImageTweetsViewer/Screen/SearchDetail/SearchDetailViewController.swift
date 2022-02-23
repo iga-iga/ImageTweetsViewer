@@ -6,10 +6,9 @@ final class SearchDetailViewController: UIViewController {
     @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var tableView: UITableView!
-    
-    @Published var searchText: String = ""
-    
-    private let viewModel = SearchDetailViewModel()
+        
+    let viewModel = SearchDetailViewModel()
+    private var bindings = Set<AnyCancellable>()
     
     static func createViewController() -> SearchDetailViewController {
         SearchDetailViewController(
@@ -30,7 +29,6 @@ final class SearchDetailViewController: UIViewController {
     
     private func commonInit() {
         self.title = ""
-        self.setupBind()
         modalPresentationStyle = .fullScreen
     }
     
@@ -38,6 +36,7 @@ final class SearchDetailViewController: UIViewController {
         // Remove the top and bottom lines for searchBar
         self.searchBar.backgroundImage = UIImage()
         self.searchBar.delegate = self
+        self.searchBar.becomeFirstResponder()
         
         self.backButton.setTitle("", for: .normal)
         self.backButton.addTarget(
@@ -45,10 +44,15 @@ final class SearchDetailViewController: UIViewController {
             action: #selector(onTapBackButton(_:)),
             for: .touchUpInside
         )
-    }
-    
-    private func setupBind() {
         
+        self.tableView.register(
+            UINib(
+                nibName: "SearchDetailTableViewCell",
+                bundle: nil
+            ),
+            forCellReuseIdentifier: "SearchDetailTableViewCell"
+        )
+        self.tableView.dataSource = self
     }
     
     @objc private func onTapBackButton(_ sender: UIBarButtonItem) {
@@ -58,9 +62,50 @@ final class SearchDetailViewController: UIViewController {
 
 extension SearchDetailViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.endEditing(true)
+        self.searchBar.endEditing(true)
         
-        self.searchText = searchBar.text ?? ""
+        self.viewModel.search(text: searchBar.text ?? "")
         self.dismiss(animated: false)
+    }
+}
+
+extension SearchDetailViewController: UITableViewDataSource {
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
+        self.viewModel.querys.count
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(
+            withIdentifier: "SearchDetailTableViewCell",
+            for: indexPath
+        )
+        
+        if
+            let imageCell = cell as? SearchDetailTableViewCell,
+            let query = self.viewModel.querys.any(indexPath.row)
+        {
+            imageCell.set(query)
+            
+            imageCell.$viewData
+                .sink(receiveValue: { viewData in
+                    self.viewModel.update(
+                        index: indexPath.row,
+                        query: .init(
+                            isActive: viewData.isActive,
+                            key: viewData.key,
+                            value: viewData.value
+                        )
+                    )
+                })
+                .store(in: &bindings)
+        }
+        
+        return cell
     }
 }
