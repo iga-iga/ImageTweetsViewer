@@ -153,11 +153,11 @@
 		C809AACF27C37EF1001E657A /* SearchDetail */ = {
 			isa = PBXGroup;
 			children = (
-				C809AAD827C39703001E657A /* SearchFilterTableViewCell.swift */,
-				C809AAD927C39703001E657A /* SearchFilterTableViewCell.xib */,
 				C809AAD027C37F1C001E657A /* SearchDetailViewController.swift */,
 				C809AAD227C37F44001E657A /* SearchDetailViewController.xib */,
 				C809AAD627C3836D001E657A /* SearchDetailViewModel.swift */,
+				C809AAD827C39703001E657A /* SearchFilterTableViewCell.swift */,
+				C809AAD927C39703001E657A /* SearchFilterTableViewCell.xib */,
 				C8CED39427C4044D00FD37D7 /* SearchHistoryTableViewCell.swift */,
 				C8CED39527C4044D00FD37D7 /* SearchHistoryTableViewCell.xib */,
 			);

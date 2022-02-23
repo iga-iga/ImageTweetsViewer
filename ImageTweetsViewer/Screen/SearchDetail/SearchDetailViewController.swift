@@ -37,6 +37,11 @@ final class SearchDetailViewController: UIViewController {
         self.searchBar.backgroundImage = UIImage()
         self.searchBar.delegate = self
         self.searchBar.becomeFirstResponder()
+        self.searchBar.searchTextField.textPublisher()
+            .sink(receiveValue: { [weak self] text in
+                self?.viewModel.searchText = text
+            })
+            .store(in: &bindings)
         
         self.backButton.setTitle("", for: .normal)
         self.backButton.addTarget(
@@ -51,6 +56,19 @@ final class SearchDetailViewController: UIViewController {
     
     private func setupBindings() {
         self.viewModel.onDeleteHistory
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] _ in
+                self?.tableView.reloadData()
+            })
+            .store(in: &bindings)
+        
+        self.viewModel.$searchText
+            .sink(receiveValue: { [weak self] text in
+                self?.searchBar.searchTextField.text = text
+            })
+            .store(in: &bindings)
+        
+        self.viewModel.$querys
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] _ in
                 self?.tableView.reloadData()
@@ -86,7 +104,7 @@ extension SearchDetailViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.endEditing(true)
         
-        self.viewModel.search(text: searchBar.text ?? "")
+        self.viewModel.search()
         self.dismiss(animated: false)
     }
 }
@@ -202,5 +220,14 @@ extension SearchDetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        switch indexPath.section {
+        case 1:
+            self.viewModel.selectHistory(index: indexPath.row)
+            
+        default:
+            break
+            
+        }
     }
 }

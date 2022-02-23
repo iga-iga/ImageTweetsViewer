@@ -171,7 +171,7 @@ extension SearchViewController: UISearchBarDelegate {
         
         let viewController = SearchDetailViewController.createViewController()
         
-        viewController.viewModel.$searchText
+        viewController.viewModel.onSearch
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: {[weak self] searchText in
                 guard
