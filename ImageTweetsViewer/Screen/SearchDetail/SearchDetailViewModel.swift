@@ -5,6 +5,10 @@ final class SearchDetailViewModel {
         var isActive: Bool
         var key: String
         var value: String
+        
+        var isValidated: Bool {
+            isActive && !key.isEmpty && !value.isEmpty
+        }
     }
     
     struct History: Equatable {
@@ -49,7 +53,7 @@ final class SearchDetailViewModel {
     func search(_ text: String) {
         var additionalText = ""
         self.querys.forEach { query in
-            if query.isActive {
+            if query.isValidated {
                 additionalText += " \(query.key):\(query.value)"
             }
         }

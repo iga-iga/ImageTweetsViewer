@@ -12,7 +12,7 @@ final class SearchHistoryTableViewCell: UITableViewCell {
     func set(_ viewData: SearchDetailViewModel.History) {
         var additionalText = ""
         viewData.querys.forEach { query in
-            if query.isActive {
+            if query.isValidated {
                 additionalText += " \(query.key):\(query.value)"
             }
         }
