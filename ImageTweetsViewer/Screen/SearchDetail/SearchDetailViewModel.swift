@@ -7,20 +7,38 @@ final class SearchDetailViewModel {
         var value: String
     }
     
+    struct History {
+        var querys: [Query]
+        var searchText: String
+    }
+    
     @Published private(set) var searchText: String = ""
-    @Published private(set) var querys: [Query]
+    @Published private(set) var querys: [Query] = []
+    @Published private(set) var history: [History] = []
+    
+    let onDeleteHistory = PassthroughSubject<Void, Never>()
     
     private var bindings = Set<AnyCancellable>()
     
     init() {
-        self.querys = LocalData.shared.searchQuerys.map { query in
-                .init(isActive: query.isActive, key: query.key, value: query.value)
+        self.querys = self.map(LocalData.shared.searchQuerys)
+        
+        self.history = LocalData.shared.searchHistory.map { history in
+                .init(querys: self.map(history.querys), searchText: history.searchText)
         }
         
         self.$querys
-            .sink(receiveValue: { querys in
-                LocalData.shared.searchQuerys = querys.map { query in
-                        .init(isActive: query.isActive, key: query.key, value: query.value)
+            .sink(receiveValue: { [weak self] querys in
+                guard let self = self else { return }
+                LocalData.shared.searchQuerys = self.map(querys)
+            })
+            .store(in: &bindings)
+        
+        self.$history
+            .sink(receiveValue: { [weak self] history in
+                guard let self = self else { return }
+                LocalData.shared.searchHistory = history.map {
+                        .init(querys: self.map($0.querys), searchText: $0.searchText)
                 }
             })
             .store(in: &bindings)
@@ -34,6 +52,7 @@ final class SearchDetailViewModel {
             }
         }
         self.searchText = text + additionalText
+        self.history.append(.init(querys: querys, searchText: text))
     }
     
     func update(
@@ -42,5 +61,25 @@ final class SearchDetailViewModel {
     ) {
         guard let _ = querys.any(index) else { return }
         self.querys[index] = query
+    }
+    
+    func deleteHistory(
+        index: Int
+    ) {
+        guard let _ = history.any(index) else { return }
+        self.history.remove(at: index)
+        self.onDeleteHistory.send()
+    }
+    
+    private func map(_ querys: [LocalData.SearchQuery]) -> [Query] {
+        querys.map { query in
+                .init(isActive: query.isActive, key: query.key, value: query.value)
+        }
+    }
+    
+    private func map(_ querys: [Query]) -> [LocalData.SearchQuery] {
+        querys.map { query in
+                .init(isActive: query.isActive, key: query.key, value: query.value)
+        }
     }
 }

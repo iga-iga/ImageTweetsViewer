@@ -45,14 +45,36 @@ final class SearchDetailViewController: UIViewController {
             for: .touchUpInside
         )
         
+        self.setupBindings()
+        self.registerTableViewCell()
+    }
+    
+    private func setupBindings() {
+        self.viewModel.onDeleteHistory
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] _ in
+                self?.tableView.reloadData()
+            })
+            .store(in: &bindings)
+    }
+    
+    private func registerTableViewCell() {
         self.tableView.register(
             UINib(
-                nibName: "SearchDetailTableViewCell",
+                nibName: "SearchFilterTableViewCell",
                 bundle: nil
             ),
-            forCellReuseIdentifier: "SearchDetailTableViewCell"
+            forCellReuseIdentifier: SearchFilterTableViewCell.identifier
+        )
+        self.tableView.register(
+            UINib(
+                nibName: "SearchHistoryTableViewCell",
+                bundle: nil
+            ),
+            forCellReuseIdentifier: SearchHistoryTableViewCell.identifier
         )
         self.tableView.dataSource = self
+        self.tableView.delegate = self
     }
     
     @objc private func onTapBackButton(_ sender: UIBarButtonItem) {
@@ -70,42 +92,115 @@ extension SearchDetailViewController: UISearchBarDelegate {
 }
 
 extension SearchDetailViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        titleForHeaderInSection section: Int
+    ) -> String? {
+        switch section {
+        case 0:
+            return "検索条件"
+            
+        case 1:
+            return "検索履歴"
+            
+        default:
+            return ""
+        }
+    }
+    
     func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        self.viewModel.querys.count
+        switch section {
+        case 0:
+            return self.viewModel.querys.count
+            
+        case 1:
+            return self.viewModel.history.count
+            
+        default:
+            return 0
+        }
+        
     }
     
     func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(
-            withIdentifier: "SearchDetailTableViewCell",
-            for: indexPath
-        )
-        
-        if
-            let imageCell = cell as? SearchDetailTableViewCell,
-            let query = self.viewModel.querys.any(indexPath.row)
-        {
-            imageCell.set(query)
+        switch indexPath.section {
+        case 0:
+            let cell = self.tableView.dequeueReusableCell(
+                withIdentifier: SearchFilterTableViewCell.identifier,
+                for: indexPath
+            )
             
-            imageCell.$viewData
-                .sink(receiveValue: { viewData in
-                    self.viewModel.update(
-                        index: indexPath.row,
-                        query: .init(
-                            isActive: viewData.isActive,
-                            key: viewData.key,
-                            value: viewData.value
+            if
+                let cell = cell as? SearchFilterTableViewCell,
+                let query = self.viewModel.querys.any(indexPath.row)
+            {
+                cell.set(query)
+                cell.onViewDataChanged
+                    .sink(receiveValue: { viewData in
+                        self.viewModel.update(
+                            index: indexPath.row,
+                            query: .init(
+                                isActive: viewData.isActive,
+                                key: viewData.key,
+                                value: viewData.value
+                            )
                         )
-                    )
-                })
-                .store(in: &bindings)
+                    })
+                    .store(in: &bindings)
+            }
+            
+            return cell
+            
+        case 1:
+            let cell = self.tableView.dequeueReusableCell(
+                withIdentifier: SearchHistoryTableViewCell.identifier,
+                for: indexPath
+            )
+            
+            if
+                let cell = cell as? SearchHistoryTableViewCell,
+                let history = self.viewModel.history.any(indexPath.row)
+            {
+                cell.set(history)
+                cell.onDeleteButtonTapped
+                    .sink(receiveValue: { _ in
+                        self.viewModel.deleteHistory(index: indexPath.row)
+                    })
+                    .store(in: &bindings)
+            }
+            
+            return cell
+            
+        default:
+            return UITableViewCell()
+            
         }
-        
-        return cell
+    }
+}
+    
+extension SearchDetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        switch indexPath.section {
+        case 0 :
+            return false
+            
+        default:
+            return true
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

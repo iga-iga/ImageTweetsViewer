@@ -4,19 +4,33 @@ struct LocalData {
     
     private enum Key: String {
         case searchQuerys
+        case searchHistory
     }
     
     static var shared = LocalData()
-    private var savedSearchQuerys: [SearchQuery] = []
     
+    private var savedSearchQuerys: [SearchQuery] = []
     var searchQuerys: [SearchQuery] {
         get {
-            savedSearchQuerys
+            self.savedSearchQuerys
         }
         set {
-            savedSearchQuerys = newValue
+            self.savedSearchQuerys = newValue
             if let encodedValue = try? JSONEncoder().encode(savedSearchQuerys) {
                 UserDefaults.standard.set(encodedValue, forKey: Key.searchQuerys.rawValue)
+            }
+        }
+    }
+    
+    private var savedSearchHistory: [SearchHistory] = []
+    var searchHistory: [SearchHistory] {
+        get {
+            self.savedSearchHistory
+        }
+        set {
+            self.savedSearchHistory = newValue
+            if let encodedValue = try? JSONEncoder().encode(newValue) {
+                UserDefaults.standard.set(encodedValue, forKey: Key.searchHistory.rawValue)
             }
         }
     }
@@ -35,6 +49,15 @@ struct LocalData {
                 .init(isActive: false, key: "", value: ""),
             ]
         }
+        
+        if
+            let data = UserDefaults.standard.data(forKey: Key.searchHistory.rawValue),
+            let searchHistory = try? JSONDecoder().decode([SearchHistory].self, from: data)
+        {
+            self.searchHistory = searchHistory
+        } else {
+            self.searchHistory = []
+        }
     }
 }
 
@@ -43,5 +66,10 @@ extension LocalData {
         var isActive: Bool
         var key: String
         var value: String
+    }
+    
+    struct SearchHistory: Codable {
+        var querys: [SearchQuery]
+        var searchText: String
     }
 }
