@@ -70,10 +70,9 @@ final class SearchDetailViewModel {
     }
     
     func deleteHistory(
-        index: Int
+        _ history: History
     ) {
-        guard let _ = history.any(index) else { return }
-        self.history.remove(at: index)
+        self.history.removeAll(where: { $0 == history } )
         self.onDeleteHistory.send()
     }
     

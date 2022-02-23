@@ -152,15 +152,15 @@ extension SearchDetailViewController: UITableViewDataSource {
                 let cell = cell as? SearchFilterTableViewCell,
                 let query = self.viewModel.querys.any(indexPath.row)
             {
-                cell.set(query)
+                cell.set(.init(indexKey: indexPath.row, query: query))
                 cell.onViewDataChanged
                     .sink(receiveValue: { viewData in
                         self.viewModel.update(
-                            index: indexPath.row,
+                            index: viewData.indexKey,
                             query: .init(
-                                isActive: viewData.isActive,
-                                key: viewData.key,
-                                value: viewData.value
+                                isActive: viewData.query.isActive,
+                                key: viewData.query.key,
+                                value: viewData.query.value
                             )
                         )
                     })
@@ -181,8 +181,8 @@ extension SearchDetailViewController: UITableViewDataSource {
             {
                 cell.set(history)
                 cell.onDeleteButtonTapped
-                    .sink(receiveValue: { _ in
-                        self.viewModel.deleteHistory(index: indexPath.row)
+                    .sink(receiveValue: { history in
+                        self.viewModel.deleteHistory(history)
                     })
                     .store(in: &bindings)
             }

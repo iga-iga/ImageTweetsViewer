@@ -6,10 +6,12 @@ final class SearchHistoryTableViewCell: UITableViewCell {
     @IBOutlet private weak var historyLabel: UILabel!
     @IBOutlet private weak var deleteButton: UIButton!
     
-    let onDeleteButtonTapped = PassthroughSubject<Void, Never>()
+    let onDeleteButtonTapped = PassthroughSubject<SearchDetailViewModel.History, Never>()
     private var bindings = Set<AnyCancellable>()
+    private var history: SearchDetailViewModel.History?
     
     func set(_ viewData: SearchDetailViewModel.History) {
+        self.history = viewData
         var additionalText = ""
         viewData.querys.forEach { query in
             if query.isValidated {
@@ -27,6 +29,7 @@ final class SearchHistoryTableViewCell: UITableViewCell {
     }
     
     @objc private func onDeleteButtonTappedEvent(_ sender: UIButton) {
-        self.onDeleteButtonTapped.send()
+        guard let history = self.history else { return }
+        self.onDeleteButtonTapped.send(history)
     }
 }
