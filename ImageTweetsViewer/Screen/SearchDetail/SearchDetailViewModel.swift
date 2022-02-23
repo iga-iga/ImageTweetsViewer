@@ -1,13 +1,13 @@
 import Combine
 
 final class SearchDetailViewModel {
-    struct Query {
+    struct Query: Equatable {
         var isActive: Bool
         var key: String
         var value: String
     }
     
-    struct History {
+    struct History: Equatable {
         var querys: [Query]
         var searchText: String
     }
@@ -54,7 +54,7 @@ final class SearchDetailViewModel {
             }
         }
         self.onSearch.send(text + additionalText)
-        self.history.append(.init(querys: self.querys, searchText: text))
+        self.addHistory(.init(querys: self.querys, searchText: text))
     }
     
     func update(
@@ -89,6 +89,12 @@ final class SearchDetailViewModel {
     private func map(_ querys: [Query]) -> [LocalData.SearchQuery] {
         querys.map { query in
                 .init(isActive: query.isActive, key: query.key, value: query.value)
+        }
+    }
+    
+    private func addHistory(_ history: History) {
+        if !self.history.contains(history) {
+            self.history.append(history)
         }
     }
 }
