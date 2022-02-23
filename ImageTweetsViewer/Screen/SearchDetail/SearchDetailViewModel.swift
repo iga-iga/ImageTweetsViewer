@@ -12,12 +12,13 @@ final class SearchDetailViewModel {
         var searchText: String
     }
     
-    @Published var searchText: String = ""
+    @Published private(set) var searchText: String = ""
     @Published private(set) var querys: [Query] = []
     @Published private(set) var history: [History] = []
     
     let onDeleteHistory = PassthroughSubject<Void, Never>()
     let onSearch = PassthroughSubject<String, Never>()
+    let onSearchDataChanged = PassthroughSubject<String, Never>()
     
     private var bindings = Set<AnyCancellable>()
     
@@ -45,15 +46,15 @@ final class SearchDetailViewModel {
             .store(in: &bindings)
     }
     
-    func search() {
+    func search(_ text: String) {
         var additionalText = ""
         self.querys.forEach { query in
             if query.isActive {
                 additionalText += " \(query.key):\(query.value)"
             }
         }
-        self.onSearch.send(self.searchText + additionalText)
-        self.history.append(.init(querys: self.querys, searchText: self.searchText))
+        self.onSearch.send(text + additionalText)
+        self.history.append(.init(querys: self.querys, searchText: text))
     }
     
     func update(
@@ -76,6 +77,7 @@ final class SearchDetailViewModel {
         guard let history = history.any(index) else { return }
         self.searchText = history.searchText
         self.querys = history.querys
+        self.onSearchDataChanged.send(history.searchText)
     }
     
     private func map(_ querys: [LocalData.SearchQuery]) -> [Query] {

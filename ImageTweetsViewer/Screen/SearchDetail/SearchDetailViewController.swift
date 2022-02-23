@@ -37,11 +37,6 @@ final class SearchDetailViewController: UIViewController {
         self.searchBar.backgroundImage = UIImage()
         self.searchBar.delegate = self
         self.searchBar.becomeFirstResponder()
-        self.searchBar.searchTextField.textPublisher()
-            .sink(receiveValue: { [weak self] text in
-                self?.viewModel.searchText = text
-            })
-            .store(in: &bindings)
         
         self.backButton.setTitle("", for: .normal)
         self.backButton.addTarget(
@@ -62,15 +57,10 @@ final class SearchDetailViewController: UIViewController {
             })
             .store(in: &bindings)
         
-        self.viewModel.$searchText
+        self.viewModel.onSearchDataChanged
+            .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] text in
                 self?.searchBar.searchTextField.text = text
-            })
-            .store(in: &bindings)
-        
-        self.viewModel.$querys
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] _ in
                 self?.tableView.reloadData()
             })
             .store(in: &bindings)
@@ -104,7 +94,7 @@ extension SearchDetailViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.endEditing(true)
         
-        self.viewModel.search()
+        self.viewModel.search(searchBar.text ?? "")
         self.dismiss(animated: false)
     }
 }
