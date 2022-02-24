@@ -4,6 +4,8 @@ import Kingfisher
 final class ImageDetailViewController: UIViewController {
     
     @IBOutlet private weak var stackView: UIStackView!
+    @IBOutlet var imageViews: [UIImageView]!
+    
     let viewModel: ImageDetailViewModel
     
     static func createViewController(
@@ -41,12 +43,28 @@ final class ImageDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // temp
-        let imageView = UIImageView()
-        self.stackView.addArrangedSubview(imageView)
-        imageView.kf.setImage(
-            with: self.viewModel.getUrl(0),
-            placeholder: Image.loadingImage
-        )
+        for (index, imageView) in self.imageViews.enumerated() {
+            guard
+                let url = self.self.viewModel.getUrl(index)
+            else {
+                imageView.isHidden = true
+                continue
+            }
+            imageView.kf.setImage(
+                with: url,
+                placeholder: Image.loadingImage
+            ) { [weak self] completion in
+                guard let self = self else { return }
+                switch completion {
+                case .success(let result):
+                    let viewWidth = self.view.frame.width
+                    let height = viewWidth * result.image.size.height / result.image.size.width
+                    imageView.heightAnchor.constraint(equalToConstant: height).isActive = true
+                    
+                case .failure:
+                    break
+                }
+            }
+        }
     }
 }
