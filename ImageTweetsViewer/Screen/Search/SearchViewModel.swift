@@ -1,7 +1,7 @@
 import Combine
 
 final class SearchViewModel {
-    private var repository = TweetsRepository()
+    private(set) var repository = TweetsRepository()
     
     @Published var latestUrls: [String] = []
 

@@ -53,6 +53,9 @@
 		C8C24F5527C24609005E9E25 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C8C24F5427C24609005E9E25 /* Kingfisher */; };
 		C8C24F5727C24667005E9E25 /* ImageCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C24F5627C24667005E9E25 /* ImageCollectionViewModel.swift */; };
 		C8CB410127C63B7A007BF10E /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CB410027C63B7A007BF10E /* UITableViewCell+Extensions.swift */; };
+		C8CB410427C695A0007BF10E /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CB410327C695A0007BF10E /* ImageDetailViewController.swift */; };
+		C8CB410627C695BC007BF10E /* ImageDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8CB410527C695BC007BF10E /* ImageDetailViewController.xib */; };
+		C8CB410827C69818007BF10E /* ImageDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CB410727C69818007BF10E /* ImageDetailViewModel.swift */; };
 		C8CED39627C4044D00FD37D7 /* SearchHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CED39427C4044D00FD37D7 /* SearchHistoryTableViewCell.swift */; };
 		C8CED39727C4044D00FD37D7 /* SearchHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8CED39527C4044D00FD37D7 /* SearchHistoryTableViewCell.xib */; };
 		C8F8B1DF27C34D93009C89E3 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F8B1DE27C34D93009C89E3 /* SearchViewModel.swift */; };
@@ -119,6 +122,9 @@
 		C8C24F5127C24087005E9E25 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C8C24F5627C24667005E9E25 /* ImageCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewModel.swift; sourceTree = "<group>"; };
 		C8CB410027C63B7A007BF10E /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
+		C8CB410327C695A0007BF10E /* ImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
+		C8CB410527C695BC007BF10E /* ImageDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageDetailViewController.xib; sourceTree = "<group>"; };
+		C8CB410727C69818007BF10E /* ImageDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewModel.swift; sourceTree = "<group>"; };
 		C8CED39427C4044D00FD37D7 /* SearchHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		C8CED39527C4044D00FD37D7 /* SearchHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		C8F8B1DE27C34D93009C89E3 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
@@ -272,6 +278,7 @@
 		C8B0EC6527C09AC000A03B36 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				C8CB410227C69568007BF10E /* ImageDetail */,
 				C8B0EC6927C09B1500A03B36 /* Search */,
 				C809AACF27C37EF1001E657A /* SearchDetail */,
 				C8B0EC6627C09ACD00A03B36 /* RootTabBar */,
@@ -328,6 +335,16 @@
 				C8C24F4F27C232A8005E9E25 /* TweetsRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		C8CB410227C69568007BF10E /* ImageDetail */ = {
+			isa = PBXGroup;
+			children = (
+				C8CB410327C695A0007BF10E /* ImageDetailViewController.swift */,
+				C8CB410527C695BC007BF10E /* ImageDetailViewController.xib */,
+				C8CB410727C69818007BF10E /* ImageDetailViewModel.swift */,
+			);
+			path = ImageDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -445,6 +462,7 @@
 				C8B0EC4227C08D3000A03B36 /* LaunchScreen.storyboard in Resources */,
 				C809AADB27C39703001E657A /* SearchFilterTableViewCell.xib in Resources */,
 				C825D17127C0EC67007D1A16 /* ImageCollectionViewCell.xib in Resources */,
+				C8CB410627C695BC007BF10E /* ImageDetailViewController.xib in Resources */,
 				C8B0EC6F27C0A84800A03B36 /* ImageCollectionViewController.xib in Resources */,
 				C8B0EC3F27C08D3000A03B36 /* Assets.xcassets in Resources */,
 				C8B0EC6D27C09B7F00A03B36 /* SearchViewController.xib in Resources */,
@@ -496,8 +514,10 @@
 				C8B0EC3827C08D2F00A03B36 /* SceneDelegate.swift in Sources */,
 				C825D17827C21221007D1A16 /* BaseRequest.swift in Sources */,
 				C8C24F4227C2207D005E9E25 /* GetSearchResponse.swift in Sources */,
+				C8CB410827C69818007BF10E /* ImageDetailViewModel.swift in Sources */,
 				C825D17E27C2128A007D1A16 /* Tokens.swift in Sources */,
 				C8C24F4B27C2300E005E9E25 /* TweetsMapper.swift in Sources */,
+				C8CB410427C695A0007BF10E /* ImageDetailViewController.swift in Sources */,
 				C809AAD727C3836D001E657A /* SearchDetailViewModel.swift in Sources */,
 				C809AADD27C3A86C001E657A /* UITextField+Extensions.swift in Sources */,
 				C809AAD127C37F1C001E657A /* SearchDetailViewController.swift in Sources */,

@@ -112,6 +112,19 @@ final class SearchViewController: UIViewController {
                 self.latestImageCollectionVC.update(urls: urls)
             })
             .store(in: &bindings)
+        
+        self.latestImageCollectionVC.onImageSelected
+            .sink(receiveValue: { [weak self] index in
+                guard let self = self else { return }
+                self.present(
+                    ImageDetailViewController.createViewController(
+                        repository: self.viewModel.repository,
+                        selectedIndex: index
+                    ),
+                    animated: true
+                )
+            })
+            .store(in: &bindings)
     }
 }
 
