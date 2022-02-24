@@ -87,6 +87,9 @@ final class SearchViewController: UIViewController {
             action: #selector(self.segmentedChanged(_:)),
             for: .valueChanged
         )
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 
     @objc private func segmentedChanged(_ sender: UISegmentedControl) {
@@ -110,6 +113,19 @@ final class SearchViewController: UIViewController {
             .sink(receiveValue: {[weak self] urls in
                 guard let self = self else { return }
                 self.latestImageCollectionVC.update(urls: urls)
+            })
+            .store(in: &bindings)
+        
+        self.latestImageCollectionVC.onImageSelected
+            .sink(receiveValue: { [weak self] index in
+                guard let self = self else { return }
+                self.navigationController?.pushViewController(
+                    ImageDetailPageViewController.createViewController(
+                        repository: self.viewModel.repository,
+                        selectedIndex: index
+                    ),
+                    animated: true
+                )
             })
             .store(in: &bindings)
     }

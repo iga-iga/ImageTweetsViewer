@@ -3,15 +3,16 @@ struct TweetData {
     let text: String
 }
 
-struct TweetsRepository {
+final class TweetsRepository {
     
     private var dataManager = DataManager<GetSearchRequest>()
+    private(set) var tweets: [TweetData] = []
 
-    mutating func getLatestTweets(
+    func getLatestTweets(
         text: String,
         completion: @escaping ([TweetData]) -> Void
     ) {
-        self.getTweets(query: text) { dom in
+        self.getTweets(query: text) { [weak self] dom in
             var tweets: [TweetData] = []
             dom.data.forEach { data in
                 if !data.mediaKeys.isEmpty {
@@ -22,6 +23,7 @@ struct TweetsRepository {
                     tweets.append(.init(imageUrls: imageUrls, text: data.text))
                 }
             }
+            self?.tweets = tweets
             completion(tweets)
         }
     }
@@ -37,7 +39,7 @@ struct TweetsRepository {
 //        }
 //    }
     
-    private mutating func getTweets(
+    private func getTweets(
         query: String,
         completion: @escaping (TweetsDOM) -> Void
     ) {

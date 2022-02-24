@@ -1,3 +1,4 @@
+import Combine
 import UIKit
 
 final class ImageCollectionViewController: UIViewController {
@@ -5,6 +6,7 @@ final class ImageCollectionViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     
     let viewModel = ImageCollectionViewModel()
+    let onImageSelected = PassthroughSubject<Int, Never>()
 
     static func createViewController() -> ImageCollectionViewController {
         ImageCollectionViewController(
@@ -30,6 +32,7 @@ final class ImageCollectionViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.collectionView.dataSource = self
+        self.collectionView.delegate = self
         
         collectionView.register(
             UINib(
@@ -84,5 +87,11 @@ extension ImageCollectionViewController: UICollectionViewDataSource {
         }
         
         return cell
+    }
+}
+
+extension ImageCollectionViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.onImageSelected.send(indexPath.row)
     }
 }
