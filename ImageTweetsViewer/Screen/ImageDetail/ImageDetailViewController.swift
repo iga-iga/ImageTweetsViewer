@@ -1,33 +1,35 @@
 import UIKit
+import Kingfisher
 
 final class ImageDetailViewController: UIViewController {
     
-    private let viewModel: ImageDetailViewModel
-    private let repository: TweetsRepository
+    @IBOutlet private weak var stackView: UIStackView!
+    let viewModel: ImageDetailViewModel
     
     static func createViewController(
-        repository: TweetsRepository,
-        selectedIndex: Int
+        viewModel: ImageDetailViewModel
     ) -> ImageDetailViewController {
         ImageDetailViewController(
-            repository: repository,
-            selectedIndex: selectedIndex
+            viewModel: viewModel
         )
     }
     
-    init(
-        repository: TweetsRepository,
-        selectedIndex: Int
-    ) {
-        self.viewModel = .init(selectedIndex: selectedIndex)
-        self.repository = repository
-        super.init(nibName: "ImageDetailViewController", bundle: nil)
+    init(viewModel: ImageDetailViewModel) {
+        self.viewModel = viewModel
+        super.init(
+            nibName: "ImageDetailViewController",
+            bundle: nil
+        )
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        self.viewModel = .init(viewData: .init(imageUrls: [], text: ""), selectedIndex: 0)
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.commonInit()
     }
 
     required init?(coder: NSCoder) {
-        self.viewModel = .init(selectedIndex: 0)
-        self.repository = TweetsRepository()
+        self.viewModel = .init(viewData: .init(imageUrls: [], text: ""), selectedIndex: 0)
         super.init(coder: coder)
         self.commonInit()
     }
@@ -39,5 +41,12 @@ final class ImageDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // temp
+        let imageView = UIImageView()
+        self.stackView.addArrangedSubview(imageView)
+        imageView.kf.setImage(
+            with: self.viewModel.getUrl(0),
+            placeholder: Image.loadingImage
+        )
     }
 }

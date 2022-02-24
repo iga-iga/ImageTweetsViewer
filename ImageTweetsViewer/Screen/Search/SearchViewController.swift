@@ -117,7 +117,7 @@ final class SearchViewController: UIViewController {
             .sink(receiveValue: { [weak self] index in
                 guard let self = self else { return }
                 self.present(
-                    ImageDetailViewController.createViewController(
+                    ImageDetailPageViewController.createViewController(
                         repository: self.viewModel.repository,
                         selectedIndex: index
                     ),

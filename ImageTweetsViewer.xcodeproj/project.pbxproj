@@ -14,6 +14,8 @@
 		C809AADB27C39703001E657A /* SearchFilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C809AAD927C39703001E657A /* SearchFilterTableViewCell.xib */; };
 		C809AADD27C3A86C001E657A /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C809AADC27C3A86C001E657A /* UITextField+Extensions.swift */; };
 		C809AAE127C3BB10001E657A /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C809AAE027C3BB10001E657A /* LocalData.swift */; };
+		C819D42A27C7BB25003E9C53 /* ImageDetailPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C819D42927C7BB25003E9C53 /* ImageDetailPageViewController.swift */; };
+		C819D42E27C7BC8A003E9C53 /* ImageDetailPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C819D42D27C7BC8A003E9C53 /* ImageDetailPageViewModel.swift */; };
 		C825D16927C0D871007D1A16 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C825D16827C0D871007D1A16 /* Array+Extensions.swift */; };
 		C825D17027C0EC67007D1A16 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C825D16E27C0EC67007D1A16 /* ImageCollectionViewCell.swift */; };
 		C825D17127C0EC67007D1A16 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C825D16F27C0EC67007D1A16 /* ImageCollectionViewCell.xib */; };
@@ -86,6 +88,8 @@
 		C809AAD927C39703001E657A /* SearchFilterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchFilterTableViewCell.xib; sourceTree = "<group>"; };
 		C809AADC27C3A86C001E657A /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		C809AAE027C3BB10001E657A /* LocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalData.swift; sourceTree = "<group>"; };
+		C819D42927C7BB25003E9C53 /* ImageDetailPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailPageViewController.swift; sourceTree = "<group>"; };
+		C819D42D27C7BC8A003E9C53 /* ImageDetailPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailPageViewModel.swift; sourceTree = "<group>"; };
 		C825D16827C0D871007D1A16 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		C825D16E27C0EC67007D1A16 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		C825D16F27C0EC67007D1A16 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -340,6 +344,8 @@
 		C8CB410227C69568007BF10E /* ImageDetail */ = {
 			isa = PBXGroup;
 			children = (
+				C819D42927C7BB25003E9C53 /* ImageDetailPageViewController.swift */,
+				C819D42D27C7BC8A003E9C53 /* ImageDetailPageViewModel.swift */,
 				C8CB410327C695A0007BF10E /* ImageDetailViewController.swift */,
 				C8CB410527C695BC007BF10E /* ImageDetailViewController.xib */,
 				C8CB410727C69818007BF10E /* ImageDetailViewModel.swift */,
@@ -495,6 +501,7 @@
 				C8C24F5727C24667005E9E25 /* ImageCollectionViewModel.swift in Sources */,
 				C8C24F5227C24087005E9E25 /* DataManager.swift in Sources */,
 				C8B0EC7127C0A85500A03B36 /* ImageCollectionViewController.swift in Sources */,
+				C819D42A27C7BB25003E9C53 /* ImageDetailPageViewController.swift in Sources */,
 				C8C24F4827C22F45005E9E25 /* DomainObjectModel.swift in Sources */,
 				C8CED39627C4044D00FD37D7 /* SearchHistoryTableViewCell.swift in Sources */,
 				C8C24F3D27C216E4005E9E25 /* GetSearchRequest.swift in Sources */,
@@ -510,6 +517,7 @@
 				C8F8B1DF27C34D93009C89E3 /* SearchViewModel.swift in Sources */,
 				C8C24F5027C232A8005E9E25 /* TweetsRepository.swift in Sources */,
 				C809AADA27C39703001E657A /* SearchFilterTableViewCell.swift in Sources */,
+				C819D42E27C7BC8A003E9C53 /* ImageDetailPageViewModel.swift in Sources */,
 				C8B0EC3627C08D2F00A03B36 /* AppDelegate.swift in Sources */,
 				C8B0EC3827C08D2F00A03B36 /* SceneDelegate.swift in Sources */,
 				C825D17827C21221007D1A16 /* BaseRequest.swift in Sources */,

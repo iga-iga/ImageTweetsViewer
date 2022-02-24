@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImageDetailViewController" customModule="ImageTweetsViewer" customModuleProvider="target">
             <connections>
+                <outlet property="stackView" destination="N6B-YM-te8" id="YLJ-3v-I40"/>
                 <outlet property="view" destination="iN0-l3-epB" id="MEV-i5-aDI"/>
             </connections>
         </placeholder>
