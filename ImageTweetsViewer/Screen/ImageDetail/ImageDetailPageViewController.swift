@@ -65,6 +65,7 @@ final class ImageDetailPageViewController: UIPageViewController {
             direction: .forward,
             animated: false
         )
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
 }
 
