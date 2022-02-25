@@ -1,3 +1,5 @@
+import Combine
+
 struct TweetData {
     let imageUrls: [String]
     let text: String
@@ -6,11 +8,10 @@ struct TweetData {
 final class TweetsRepository {
     
     private var dataManager = DataManager<GetSearchRequest>()
-    private(set) var tweets: [TweetData] = []
+    @Published private(set) var latestTweets: [TweetData] = []
 
-    func getLatestTweets(
-        text: String,
-        completion: @escaping ([TweetData]) -> Void
+    func searchLatestTweets(
+        text: String
     ) {
         self.getTweets(query: text) { [weak self] dom in
             var tweets: [TweetData] = []
@@ -23,8 +24,7 @@ final class TweetsRepository {
                     tweets.append(.init(imageUrls: imageUrls, text: data.text))
                 }
             }
-            self?.tweets = tweets
-            completion(tweets)
+            self?.latestTweets = tweets
         }
     }
     

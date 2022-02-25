@@ -41,7 +41,7 @@ final class SearchViewController: UIViewController {
 
     private func commonInit() {
         self.title = "Search"
-        self.setupBind()
+        self.setupBinds()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -103,9 +103,10 @@ final class SearchViewController: UIViewController {
         self.currentIndex = index
     }
     
-    private func setupBind() {
-        viewModel.$latestUrls
+    private func setupBinds() {
+        self.viewModel.$latestUrls
             .receive(on: DispatchQueue.main)
+            .dropFirst()
             .sink(receiveValue: { [weak self] urls in
                 guard let self = self else { return }
                 self.latestImageCollectionVC.update(urls: urls)
@@ -181,9 +182,9 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
         
-        let viewController = SearchDetailViewController.createViewController()
+        let searchDetailVC = SearchDetailViewController.createViewController()
         
-        viewController.viewModel.onSearch
+        searchDetailVC.viewModel.onSearch
             .sink(receiveValue: { [weak self] searchText in
                 guard
                     let self = self,
@@ -195,6 +196,6 @@ extension SearchViewController: UISearchBarDelegate {
             })
             .store(in: &bindings)
         
-        self.present(viewController, animated: false)
+        self.present(searchDetailVC, animated: false)
     }
 }
