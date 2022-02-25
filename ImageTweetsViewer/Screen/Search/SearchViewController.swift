@@ -82,19 +82,17 @@ final class SearchViewController: UIViewController {
             )
         }
         self.segmentedControl.selectedSegmentIndex = currentIndex
-        self.segmentedControl.addTarget(
-            self,
-            action: #selector(self.segmentedChanged(_:)),
-            for: .valueChanged
-        )
+        self.segmentedControl.valuePublisher()
+            .sink(receiveValue: { [weak self] index in
+                self?.segmentedChanged(index)
+            })
+            .store(in: &bindings)
         
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 
-    @objc private func segmentedChanged(_ sender: UISegmentedControl) {
-        
-        let index = sender.selectedSegmentIndex
+    private func segmentedChanged(_ index: Int) {
         guard let viewController = self.controllers.any(index) else { return }
         
         self.pageViewController.setViewControllers(
