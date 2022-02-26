@@ -8,7 +8,7 @@ final class SearchFilterTableViewCell: UITableViewCell {
         var query: SearchDetailViewModel.Query
     }
     
-    @IBOutlet private weak var activateSwitch: UISwitch!
+    @IBOutlet private weak var activateSwitch: SubscribableSwitch!
     @IBOutlet private weak var keyTextField: UITextField!
     @IBOutlet private weak var valueTextField: UITextField!
     
@@ -24,12 +24,15 @@ final class SearchFilterTableViewCell: UITableViewCell {
         self.activateSwitch.isOn = viewData.query.isActive
         self.keyTextField.text = viewData.query.key
         self.valueTextField.text = viewData.query.value
-        
-        self.activateSwitch.addTarget(
-            self,
-            action: #selector(switchChanged(_:)),
-            for: .valueChanged
-        )
+
+        self.activateSwitch.onSwitchPublisher()
+            .sink(receiveValue: { [weak self] isOn in
+                guard let self = self else { return }
+                self.viewData?.query.isActive = isOn
+                guard let viewData = self.viewData else { return }
+                self.onViewDataChanged.send(viewData)
+            })
+            .store(in: &bindings)
         
         self.keyTextField.textPublisher()
             .sink(receiveValue: {[weak self] key in
@@ -48,11 +51,5 @@ final class SearchFilterTableViewCell: UITableViewCell {
                 self.onViewDataChanged.send(viewData)
             })
             .store(in: &bindings)
-    }
-    
-    @objc private func switchChanged(_ sender: UISwitch) {
-        self.viewData?.query.isActive = sender.isOn
-        guard let viewData = self.viewData else { return }
-        self.onViewDataChanged.send(viewData)
     }
 }
