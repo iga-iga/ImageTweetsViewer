@@ -34,12 +34,12 @@ final class ImageCollectionViewController: UIViewController {
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         
-        collectionView.register(
+        self.collectionView.register(
             UINib(
                 nibName: "ImageCollectionViewCell",
                 bundle: nil
             ),
-            forCellWithReuseIdentifier: "ImageCollectionViewCell"
+            forCellWithReuseIdentifier: ImageCollectionViewCell.identifier
         )
     }
     
@@ -75,7 +75,7 @@ extension ImageCollectionViewController: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "ImageCollectionViewCell",
+            withReuseIdentifier: ImageCollectionViewCell.identifier,
             for: indexPath
         )
         
@@ -91,7 +91,10 @@ extension ImageCollectionViewController: UICollectionViewDataSource {
 }
 
 extension ImageCollectionViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
         self.onImageSelected.send(indexPath.row)
     }
 }
