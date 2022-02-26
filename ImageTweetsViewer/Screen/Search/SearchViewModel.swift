@@ -1,15 +1,20 @@
 import Combine
 
 final class SearchViewModel {
-    private(set) var repository = TweetsRepository()
     
-    @Published var latestUrls: [String] = []
+    let repository = TweetsRepository()
+    @Published private(set) var latestUrls: [String] = []
+    private var bindings = Set<AnyCancellable>()
 
+    init() {
+        self.repository.$latestTweets
+            .sink(receiveValue: { [weak self] tweets in
+                self?.latestUrls = tweets.map { $0.imageUrls.first ?? "" }
+            })
+            .store(in: &bindings)
+    }
+    
     func search(text: String) {
-        self.repository.getLatestTweets(
-            text: text
-        ) { tweets in
-            self.latestUrls = tweets.map { $0.imageUrls.first ?? "" }
-        }
+        self.repository.searchLatestTweets(text: text)
     }
 }

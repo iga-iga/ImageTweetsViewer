@@ -5,12 +5,11 @@ final class SearchViewController: UIViewController {
 
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var pageContainerView: UIView!
-    @IBOutlet private weak var segmentedControl: UISegmentedControl!
+    @IBOutlet private weak var segmentedControl: SubscribableSegmentedControl!
 
     private let pageViewController = UIPageViewController(
         transitionStyle: .scroll,
-        navigationOrientation: .horizontal,
-        options: nil
+        navigationOrientation: .horizontal
     )
 
     private let latestImageCollectionVC = ImageCollectionViewController.createViewController()
@@ -20,7 +19,7 @@ final class SearchViewController: UIViewController {
         self.popularImageCollectionVC
     ]}
 
-    private var segmentedItems = ["最新", "人気"]
+    private let segmentedItems = ["最新", "人気"]
 
     private var currentIndex = 0
     private let viewModel = SearchViewModel()
@@ -42,7 +41,7 @@ final class SearchViewController: UIViewController {
 
     private func commonInit() {
         self.title = "Search"
-        self.setupBind()
+        self.setupBinds()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -82,35 +81,33 @@ final class SearchViewController: UIViewController {
             )
         }
         self.segmentedControl.selectedSegmentIndex = currentIndex
-        self.segmentedControl.addTarget(
-            self,
-            action: #selector(self.segmentedChanged(_:)),
-            for: .valueChanged
-        )
+        self.segmentedControl.valuePublisher()
+            .sink(receiveValue: { [weak self] index in
+                self?.segmentedChanged(index)
+            })
+            .store(in: &bindings)
         
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 
-    @objc private func segmentedChanged(_ sender: UISegmentedControl) {
-        
-        let index = sender.selectedSegmentIndex
+    private func segmentedChanged(_ index: Int) {
         guard let viewController = self.controllers.any(index) else { return }
         
         self.pageViewController.setViewControllers(
             [viewController],
             direction: currentIndex < index ? .forward : .reverse,
-            animated: true,
-            completion: nil
+            animated: true
         )
 
         self.currentIndex = index
     }
     
-    private func setupBind() {
-        viewModel.$latestUrls
+    private func setupBinds() {
+        self.viewModel.$latestUrls
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: {[weak self] urls in
+            .dropFirst()
+            .sink(receiveValue: { [weak self] urls in
                 guard let self = self else { return }
                 self.latestImageCollectionVC.update(urls: urls)
             })
@@ -132,10 +129,10 @@ final class SearchViewController: UIViewController {
 }
 
 extension SearchViewController: UIPageViewControllerDataSource {
-   func presentationCount(for pageViewController: UIPageViewController) -> Int {
-       self.controllers.count
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        self.controllers.count
     }
-
+    
     func pageViewController(
         _ pageViewController: UIPageViewController,
         viewControllerBefore viewController: UIViewController
@@ -148,7 +145,7 @@ extension SearchViewController: UIPageViewControllerDataSource {
         }
         return viewController
     }
-
+    
     func pageViewController(
         _ pageViewController: UIPageViewController,
         viewControllerAfter viewController: UIViewController
@@ -185,11 +182,10 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
         
-        let viewController = SearchDetailViewController.createViewController()
+        let searchDetailVC = SearchDetailViewController.createViewController()
         
-        viewController.viewModel.onSearch
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: {[weak self] searchText in
+        searchDetailVC.viewModel.onSearch
+            .sink(receiveValue: { [weak self] searchText in
                 guard
                     let self = self,
                     !searchText.isEmpty
@@ -200,6 +196,6 @@ extension SearchViewController: UISearchBarDelegate {
             })
             .store(in: &bindings)
         
-        self.present(viewController, animated: false)
+        self.present(searchDetailVC, animated: false)
     }
 }

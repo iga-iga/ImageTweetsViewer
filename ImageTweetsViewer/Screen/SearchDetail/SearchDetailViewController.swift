@@ -3,7 +3,7 @@ import UIKit
 
 final class SearchDetailViewController: UIViewController {
     
-    @IBOutlet private weak var backButton: UIButton!
+    @IBOutlet private weak var backButton: SubscribableButton!
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var tableView: UITableView!
         
@@ -29,7 +29,7 @@ final class SearchDetailViewController: UIViewController {
     
     private func commonInit() {
         self.title = ""
-        modalPresentationStyle = .fullScreen
+        self.modalPresentationStyle = .fullScreen
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,11 +39,12 @@ final class SearchDetailViewController: UIViewController {
         self.searchBar.becomeFirstResponder()
         
         self.backButton.setTitle("", for: .normal)
-        self.backButton.addTarget(
-            self,
-            action: #selector(onTapBackButton(_:)),
-            for: .touchUpInside
-        )
+        self.backButton
+            .onTapPublisher()
+            .sink(receiveValue: {
+                self.dismiss(animated: false)
+            })
+            .store(in: &bindings)
         
         self.setupBindings()
         self.registerTableViewCell()
@@ -84,10 +85,6 @@ final class SearchDetailViewController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
     }
-    
-    @objc private func onTapBackButton(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: false)
-    }
 }
 
 extension SearchDetailViewController: UISearchBarDelegate {
@@ -117,6 +114,7 @@ extension SearchDetailViewController: UITableViewDataSource {
             
         default:
             return ""
+            
         }
     }
     
@@ -133,8 +131,8 @@ extension SearchDetailViewController: UITableViewDataSource {
             
         default:
             return 0
+            
         }
-        
     }
     
     func tableView(
@@ -197,7 +195,10 @@ extension SearchDetailViewController: UITableViewDataSource {
 }
     
 extension SearchDetailViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+    func tableView(
+        _ tableView: UITableView,
+        shouldHighlightRowAt indexPath: IndexPath
+    ) -> Bool {
         switch indexPath.section {
         case 0 :
             return false
@@ -208,7 +209,10 @@ extension SearchDetailViewController: UITableViewDelegate {
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         switch indexPath.section {

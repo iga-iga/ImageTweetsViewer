@@ -23,6 +23,9 @@
 		C825D17B27C2124E007D1A16 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C825D17A27C2124E007D1A16 /* BaseResponse.swift */; };
 		C825D17E27C2128A007D1A16 /* Tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = C825D17D27C2128A007D1A16 /* Tokens.swift */; };
 		C825D18027C212E2007D1A16 /* DateFormatter+Entensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C825D17F27C212E2007D1A16 /* DateFormatter+Entensions.swift */; };
+		C83A083E27C91AC20021ABB8 /* SubscribableSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A083D27C91AC20021ABB8 /* SubscribableSegmentedControl.swift */; };
+		C83A084127CA30820021ABB8 /* SubscribableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A084027CA30820021ABB8 /* SubscribableButton.swift */; };
+		C83A084327CA38EF0021ABB8 /* SubscribableSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A084227CA38EF0021ABB8 /* SubscribableSwitch.swift */; };
 		C8B0EC3627C08D2F00A03B36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0EC3527C08D2F00A03B36 /* AppDelegate.swift */; };
 		C8B0EC3827C08D2F00A03B36 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0EC3727C08D2F00A03B36 /* SceneDelegate.swift */; };
 		C8B0EC3A27C08D2F00A03B36 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0EC3927C08D2F00A03B36 /* ViewController.swift */; };
@@ -54,7 +57,7 @@
 		C8C24F5227C24087005E9E25 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C24F5127C24087005E9E25 /* DataManager.swift */; };
 		C8C24F5527C24609005E9E25 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C8C24F5427C24609005E9E25 /* Kingfisher */; };
 		C8C24F5727C24667005E9E25 /* ImageCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C24F5627C24667005E9E25 /* ImageCollectionViewModel.swift */; };
-		C8CB410127C63B7A007BF10E /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CB410027C63B7A007BF10E /* UITableViewCell+Extensions.swift */; };
+		C8CB410127C63B7A007BF10E /* IdentifiableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CB410027C63B7A007BF10E /* IdentifiableView.swift */; };
 		C8CB410427C695A0007BF10E /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CB410327C695A0007BF10E /* ImageDetailViewController.swift */; };
 		C8CB410627C695BC007BF10E /* ImageDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8CB410527C695BC007BF10E /* ImageDetailViewController.xib */; };
 		C8CB410827C69818007BF10E /* ImageDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CB410727C69818007BF10E /* ImageDetailViewModel.swift */; };
@@ -97,6 +100,9 @@
 		C825D17A27C2124E007D1A16 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		C825D17D27C2128A007D1A16 /* Tokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokens.swift; sourceTree = "<group>"; };
 		C825D17F27C212E2007D1A16 /* DateFormatter+Entensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Entensions.swift"; sourceTree = "<group>"; };
+		C83A083D27C91AC20021ABB8 /* SubscribableSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribableSegmentedControl.swift; sourceTree = "<group>"; };
+		C83A084027CA30820021ABB8 /* SubscribableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribableButton.swift; sourceTree = "<group>"; };
+		C83A084227CA38EF0021ABB8 /* SubscribableSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribableSwitch.swift; sourceTree = "<group>"; };
 		C8B0EC3227C08D2F00A03B36 /* ImageTweetsViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageTweetsViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B0EC3527C08D2F00A03B36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8B0EC3727C08D2F00A03B36 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,7 +131,7 @@
 		C8C24F4F27C232A8005E9E25 /* TweetsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetsRepository.swift; sourceTree = "<group>"; };
 		C8C24F5127C24087005E9E25 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C8C24F5627C24667005E9E25 /* ImageCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewModel.swift; sourceTree = "<group>"; };
-		C8CB410027C63B7A007BF10E /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
+		C8CB410027C63B7A007BF10E /* IdentifiableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableView.swift; sourceTree = "<group>"; };
 		C8CB410327C695A0007BF10E /* ImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
 		C8CB410527C695BC007BF10E /* ImageDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageDetailViewController.xib; sourceTree = "<group>"; };
 		C8CB410727C69818007BF10E /* ImageDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewModel.swift; sourceTree = "<group>"; };
@@ -180,7 +186,6 @@
 				C825D16827C0D871007D1A16 /* Array+Extensions.swift */,
 				C825D17F27C212E2007D1A16 /* DateFormatter+Entensions.swift */,
 				C809AADC27C3A86C001E657A /* UITextField+Extensions.swift */,
-				C8CB410027C63B7A007BF10E /* UITableViewCell+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -221,6 +226,26 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		C83A083F27CA2C220021ABB8 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C825D16727C0D845007D1A16 /* Extensions */,
+				C8CB410027C63B7A007BF10E /* IdentifiableView.swift */,
+				C83A084427CA48AE0021ABB8 /* View */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		C83A084427CA48AE0021ABB8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C83A084027CA30820021ABB8 /* SubscribableButton.swift */,
+				C83A083D27C91AC20021ABB8 /* SubscribableSegmentedControl.swift */,
+				C83A084227CA38EF0021ABB8 /* SubscribableSwitch.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C8B0EC2927C08D2E00A03B36 = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				C825D17527C211F9007D1A16 /* API */,
+				C83A083F27CA2C220021ABB8 /* Common */,
 				C8C24F4427C22CB5005E9E25 /* DomainObjectModel */,
 				C8C24F4927C22FED005E9E25 /* Mapper */,
 				C8C24F4E27C2327D005E9E25 /* Repository */,
@@ -252,7 +278,6 @@
 				C8B0EC6527C09AC000A03B36 /* Screen */,
 				C8B0EC3527C08D2F00A03B36 /* AppDelegate.swift */,
 				C8B0EC3E27C08D3000A03B36 /* Assets.xcassets */,
-				C825D16727C0D845007D1A16 /* Extensions */,
 				C8B0EC4327C08D3000A03B36 /* Info.plist */,
 				C8B0EC4027C08D3000A03B36 /* LaunchScreen.storyboard */,
 				C8B0EC3B27C08D2F00A03B36 /* Main.storyboard */,
@@ -501,19 +526,22 @@
 				C8C24F5727C24667005E9E25 /* ImageCollectionViewModel.swift in Sources */,
 				C8C24F5227C24087005E9E25 /* DataManager.swift in Sources */,
 				C8B0EC7127C0A85500A03B36 /* ImageCollectionViewController.swift in Sources */,
+				C83A084327CA38EF0021ABB8 /* SubscribableSwitch.swift in Sources */,
 				C819D42A27C7BB25003E9C53 /* ImageDetailPageViewController.swift in Sources */,
 				C8C24F4827C22F45005E9E25 /* DomainObjectModel.swift in Sources */,
 				C8CED39627C4044D00FD37D7 /* SearchHistoryTableViewCell.swift in Sources */,
 				C8C24F3D27C216E4005E9E25 /* GetSearchRequest.swift in Sources */,
 				C8C24F4D27C2317B005E9E25 /* Mapper.swift in Sources */,
-				C8CB410127C63B7A007BF10E /* UITableViewCell+Extensions.swift in Sources */,
+				C8CB410127C63B7A007BF10E /* IdentifiableView.swift in Sources */,
 				C8B0EC6B27C09B3200A03B36 /* SearchViewController.swift in Sources */,
 				C8B0EC6827C09AE700A03B36 /* RootTabBarViewController.swift in Sources */,
 				C8B8E11F27C28D4E00076CBE /* Image.swift in Sources */,
+				C83A084127CA30820021ABB8 /* SubscribableButton.swift in Sources */,
 				C825D16927C0D871007D1A16 /* Array+Extensions.swift in Sources */,
 				C825D17B27C2124E007D1A16 /* BaseResponse.swift in Sources */,
 				C8B0EC3A27C08D2F00A03B36 /* ViewController.swift in Sources */,
 				C825D18027C212E2007D1A16 /* DateFormatter+Entensions.swift in Sources */,
+				C83A083E27C91AC20021ABB8 /* SubscribableSegmentedControl.swift in Sources */,
 				C8F8B1DF27C34D93009C89E3 /* SearchViewModel.swift in Sources */,
 				C8C24F5027C232A8005E9E25 /* TweetsRepository.swift in Sources */,
 				C809AADA27C39703001E657A /* SearchFilterTableViewCell.swift in Sources */,

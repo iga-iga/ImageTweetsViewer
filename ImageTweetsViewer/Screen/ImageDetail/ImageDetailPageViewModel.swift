@@ -6,7 +6,7 @@ final class ImageDetailPageViewModel {
     private(set) var selectedIndex: Int
     
     var tweetsCount: Int {
-        self.repository.tweets.count
+        self.repository.latestTweets.count
     }
     
     init(
@@ -19,7 +19,7 @@ final class ImageDetailPageViewModel {
     
     func getCurrentViewData() -> ImageDetailViewModel.ViewData {
         guard
-            let tweet = self.repository.tweets.any(selectedIndex)
+            let tweet = self.repository.latestTweets.any(selectedIndex)
         else {
             return .init(imageUrls: [], text: "")
         }
@@ -28,7 +28,7 @@ final class ImageDetailPageViewModel {
     
     func getBeforeViewData() -> ImageDetailViewModel.ViewData? {
         guard
-            let tweet = self.repository.tweets.any(self.selectedIndex - 1)
+            let tweet = self.repository.latestTweets.any(self.selectedIndex - 1)
         else {
             return nil
         }
@@ -37,7 +37,7 @@ final class ImageDetailPageViewModel {
     
     func getAfterViewData() -> ImageDetailViewModel.ViewData? {
         guard
-            let tweet = self.repository.tweets.any(self.selectedIndex + 1)
+            let tweet = self.repository.latestTweets.any(self.selectedIndex + 1)
         else {
             return nil
         }

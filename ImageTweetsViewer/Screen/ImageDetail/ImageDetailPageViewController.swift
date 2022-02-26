@@ -74,12 +74,18 @@ extension ImageDetailPageViewController: UIPageViewControllerDataSource {
         self.viewModel.tweetsCount
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        viewControllerBefore viewController: UIViewController
+    ) -> UIViewController? {
         guard let viewData =  self.viewModel.getBeforeViewData() else { return nil }
         return ImageDetailViewController.createViewController(viewModel: .init(viewData: viewData, selectedIndex: self.viewModel.selectedIndex - 1))
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        viewControllerAfter viewController: UIViewController
+    ) -> UIViewController? {
         guard let viewData =  self.viewModel.getAfterViewData() else { return nil }
         return ImageDetailViewController.createViewController(viewModel: .init(viewData: viewData, selectedIndex: self.viewModel.selectedIndex + 1))
     }

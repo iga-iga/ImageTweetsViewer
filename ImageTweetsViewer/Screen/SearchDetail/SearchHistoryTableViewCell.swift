@@ -4,7 +4,7 @@ import UIKit
 final class SearchHistoryTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var historyLabel: UILabel!
-    @IBOutlet private weak var deleteButton: UIButton!
+    @IBOutlet private weak var deleteButton: SubscribableButton!
     
     let onDeleteButtonTapped = PassthroughSubject<SearchDetailViewModel.History, Never>()
     private var bindings = Set<AnyCancellable>()
@@ -21,15 +21,16 @@ final class SearchHistoryTableViewCell: UITableViewCell {
         self.historyLabel.text = viewData.searchText + additionalText
         
         self.deleteButton.setTitle("", for: .normal)
-        self.deleteButton.addTarget(
-            self,
-            action: #selector(self.onDeleteButtonTappedEvent),
-            for: .touchUpInside
-        )
-    }
-    
-    @objc private func onDeleteButtonTappedEvent(_ sender: UIButton) {
-        guard let history = self.history else { return }
-        self.onDeleteButtonTapped.send(history)
+        self.deleteButton.onTapPublisher()
+            .sink(receiveValue: { [weak self] in
+                guard
+                    let self = self,
+                    let history = self.history
+                else {
+                    return
+                }
+                self.onDeleteButtonTapped.send(history)
+            })
+            .store(in: &bindings)
     }
 }

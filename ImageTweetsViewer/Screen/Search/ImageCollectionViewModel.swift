@@ -1,6 +1,6 @@
 import Combine
 
-class ImageCollectionViewModel {
+final class ImageCollectionViewModel {
     
     private(set) var urls: [String] = []
     

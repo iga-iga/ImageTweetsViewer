@@ -84,15 +84,11 @@ final class SearchDetailViewModel {
     }
     
     private func map(_ querys: [LocalData.SearchQuery]) -> [Query] {
-        querys.map { query in
-                .init(isActive: query.isActive, key: query.key, value: query.value)
-        }
+        querys.map { .init(isActive: $0.isActive, key: $0.key, value: $0.value) }
     }
     
     private func map(_ querys: [Query]) -> [LocalData.SearchQuery] {
-        querys.map { query in
-                .init(isActive: query.isActive, key: query.key, value: query.value)
-        }
+        querys.map { .init(isActive: $0.isActive, key: $0.key, value: $0.value) }
     }
     
     private func addHistory(_ history: History) {

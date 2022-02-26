@@ -4,7 +4,7 @@ import Kingfisher
 final class ImageDetailViewController: UIViewController {
     
     @IBOutlet private weak var stackView: UIStackView!
-    @IBOutlet var imageViews: [UIImageView]!
+    @IBOutlet private var imageViews: [UIImageView]!
     
     let viewModel: ImageDetailViewModel
     
