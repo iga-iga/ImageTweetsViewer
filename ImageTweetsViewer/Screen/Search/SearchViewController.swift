@@ -5,7 +5,7 @@ final class SearchViewController: UIViewController {
 
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var pageContainerView: UIView!
-    @IBOutlet private weak var segmentedControl: UISegmentedControl!
+    @IBOutlet private weak var segmentedControl: SubscribableSegmentedControl!
 
     private let pageViewController = UIPageViewController(
         transitionStyle: .scroll,

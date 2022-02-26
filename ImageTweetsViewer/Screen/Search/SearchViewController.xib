@@ -32,7 +32,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpB-iE-J6g" userLabel="Segment Container">
                     <rect key="frame" x="0.0" y="92" width="414" height="48"/>
                     <subviews>
-                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7lG-9V-Kop" userLabel="SegmentedControl">
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7lG-9V-Kop" userLabel="SegmentedControl" customClass="SubscribableSegmentedControl" customModule="ImageTweetsViewer" customModuleProvider="target">
                             <rect key="frame" x="8" y="4" width="398" height="41"/>
                             <segments>
                                 <segment title="First"/>
