@@ -26,6 +26,7 @@
 		C83A083E27C91AC20021ABB8 /* SubscribableSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A083D27C91AC20021ABB8 /* SubscribableSegmentedControl.swift */; };
 		C83A084127CA30820021ABB8 /* SubscribableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A084027CA30820021ABB8 /* SubscribableButton.swift */; };
 		C83A084327CA38EF0021ABB8 /* SubscribableSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A084227CA38EF0021ABB8 /* SubscribableSwitch.swift */; };
+		C88268FE27CD0D9200F2B083 /* ColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88268FD27CD0D9200F2B083 /* ColorSet.swift */; };
 		C8B0EC3627C08D2F00A03B36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0EC3527C08D2F00A03B36 /* AppDelegate.swift */; };
 		C8B0EC3827C08D2F00A03B36 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0EC3727C08D2F00A03B36 /* SceneDelegate.swift */; };
 		C8B0EC3A27C08D2F00A03B36 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0EC3927C08D2F00A03B36 /* ViewController.swift */; };
@@ -103,6 +104,7 @@
 		C83A083D27C91AC20021ABB8 /* SubscribableSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribableSegmentedControl.swift; sourceTree = "<group>"; };
 		C83A084027CA30820021ABB8 /* SubscribableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribableButton.swift; sourceTree = "<group>"; };
 		C83A084227CA38EF0021ABB8 /* SubscribableSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribableSwitch.swift; sourceTree = "<group>"; };
+		C88268FD27CD0D9200F2B083 /* ColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSet.swift; sourceTree = "<group>"; };
 		C8B0EC3227C08D2F00A03B36 /* ImageTweetsViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageTweetsViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B0EC3527C08D2F00A03B36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8B0EC3727C08D2F00A03B36 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			children = (
 				C825D17D27C2128A007D1A16 /* Tokens.swift */,
 				C8B8E11E27C28D4E00076CBE /* Image.swift */,
+				C88268FD27CD0D9200F2B083 /* ColorSet.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				C8C24F3D27C216E4005E9E25 /* GetSearchRequest.swift in Sources */,
 				C8C24F4D27C2317B005E9E25 /* Mapper.swift in Sources */,
 				C8CB410127C63B7A007BF10E /* IdentifiableView.swift in Sources */,
+				C88268FE27CD0D9200F2B083 /* ColorSet.swift in Sources */,
 				C8B0EC6B27C09B3200A03B36 /* SearchViewController.swift in Sources */,
 				C8B0EC6827C09AE700A03B36 /* RootTabBarViewController.swift in Sources */,
 				C8B8E11F27C28D4E00076CBE /* Image.swift in Sources */,

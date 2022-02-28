@@ -66,6 +66,8 @@ final class ImageDetailPageViewController: UIPageViewController {
             animated: false
         )
         self.navigationController?.setNavigationBarHidden(false, animated: false)
+        
+        self.view.backgroundColor = ColorSet.background
     }
 }
 
