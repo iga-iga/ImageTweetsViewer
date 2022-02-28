@@ -27,6 +27,8 @@
 		C83A084127CA30820021ABB8 /* SubscribableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A084027CA30820021ABB8 /* SubscribableButton.swift */; };
 		C83A084327CA38EF0021ABB8 /* SubscribableSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A084227CA38EF0021ABB8 /* SubscribableSwitch.swift */; };
 		C88268FE27CD0D9200F2B083 /* ColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88268FD27CD0D9200F2B083 /* ColorSet.swift */; };
+		C882690127CD179600F2B083 /* ImageDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C882690027CD179600F2B083 /* ImageDetailCell.swift */; };
+		C882690327CD2CFE00F2B083 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C882690227CD2CFE00F2B083 /* ImageView.swift */; };
 		C8B0EC3627C08D2F00A03B36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0EC3527C08D2F00A03B36 /* AppDelegate.swift */; };
 		C8B0EC3827C08D2F00A03B36 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0EC3727C08D2F00A03B36 /* SceneDelegate.swift */; };
 		C8B0EC3A27C08D2F00A03B36 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0EC3927C08D2F00A03B36 /* ViewController.swift */; };
@@ -105,6 +107,8 @@
 		C83A084027CA30820021ABB8 /* SubscribableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribableButton.swift; sourceTree = "<group>"; };
 		C83A084227CA38EF0021ABB8 /* SubscribableSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribableSwitch.swift; sourceTree = "<group>"; };
 		C88268FD27CD0D9200F2B083 /* ColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSet.swift; sourceTree = "<group>"; };
+		C882690027CD179600F2B083 /* ImageDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailCell.swift; sourceTree = "<group>"; };
+		C882690227CD2CFE00F2B083 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		C8B0EC3227C08D2F00A03B36 /* ImageTweetsViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageTweetsViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B0EC3527C08D2F00A03B36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8B0EC3727C08D2F00A03B36 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -249,6 +253,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		C88268FF27CD175B00F2B083 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C882690027CD179600F2B083 /* ImageDetailCell.swift */,
+				C882690227CD2CFE00F2B083 /* ImageView.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		C8B0EC2927C08D2E00A03B36 = {
 			isa = PBXGroup;
 			children = (
@@ -372,6 +385,7 @@
 		C8CB410227C69568007BF10E /* ImageDetail */ = {
 			isa = PBXGroup;
 			children = (
+				C88268FF27CD175B00F2B083 /* Cell */,
 				C819D42927C7BB25003E9C53 /* ImageDetailPageViewController.swift */,
 				C819D42D27C7BC8A003E9C53 /* ImageDetailPageViewModel.swift */,
 				C8CB410327C695A0007BF10E /* ImageDetailViewController.swift */,
@@ -525,11 +539,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C882690327CD2CFE00F2B083 /* ImageView.swift in Sources */,
 				C825D17027C0EC67007D1A16 /* ImageCollectionViewCell.swift in Sources */,
 				C8C24F5727C24667005E9E25 /* ImageCollectionViewModel.swift in Sources */,
 				C8C24F5227C24087005E9E25 /* DataManager.swift in Sources */,
 				C8B0EC7127C0A85500A03B36 /* ImageCollectionViewController.swift in Sources */,
 				C83A084327CA38EF0021ABB8 /* SubscribableSwitch.swift in Sources */,
+				C882690127CD179600F2B083 /* ImageDetailCell.swift in Sources */,
 				C819D42A27C7BB25003E9C53 /* ImageDetailPageViewController.swift in Sources */,
 				C8C24F4827C22F45005E9E25 /* DomainObjectModel.swift in Sources */,
 				C8CED39627C4044D00FD37D7 /* SearchHistoryTableViewCell.swift in Sources */,
