@@ -33,6 +33,6 @@ extension ImageDetail {
 
 extension ImageDetail {
     struct Cells {
-        var imageDetailCell = Cell<ImageView>()
+        typealias ImageCell = Cell<ImageView>
     }
 }

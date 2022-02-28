@@ -3,9 +3,7 @@ import Kingfisher
 
 final class ImageDetailViewController: UIViewController {
     
-    @IBOutlet private weak var stackView: UIStackView!
-    @IBOutlet private var imageViews: [UIImageView]!
-    
+    @IBOutlet private weak var tableView: UITableView!
     let viewModel: ImageDetailViewModel
     
     static func createViewController(
@@ -43,28 +41,37 @@ final class ImageDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        for (index, imageView) in self.imageViews.enumerated() {
-            guard
-                let url = self.self.viewModel.getUrl(index)
-            else {
-                imageView.isHidden = true
-                continue
-            }
-            imageView.kf.setImage(
-                with: url,
-                placeholder: Image.loadingImage
-            ) { [weak self] completion in
-                guard let self = self else { return }
-                switch completion {
-                case .success(let result):
-                    let viewWidth = self.view.frame.width
-                    let height = viewWidth * result.image.size.height / result.image.size.width
-                    imageView.heightAnchor.constraint(equalToConstant: height).isActive = true
-                    
-                case .failure:
-                    break
-                }
-            }
+        self.tableView.dataSource = self
+        
+        self.tableView.register(ImageDetail.Cells.ImageCell.self, forCellReuseIdentifier: ImageDetail.Cells.ImageCell.identifier)
+    }
+}
+
+extension ImageDetailViewController: UITableViewDataSource {
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
+        self.viewModel.viewData.imageUrls.count
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(
+            withIdentifier: ImageDetail.Cells.ImageCell.identifier,
+            for: indexPath
+        )
+        
+        guard
+            let imageCell = cell as? ImageDetail.Cells.ImageCell,
+            let url = self.viewModel.getUrl(indexPath.row)
+        else {
+            return UITableViewCell()
         }
+        imageCell.update(viewData: .init(imageUrl: url))
+        
+        return cell
     }
 }

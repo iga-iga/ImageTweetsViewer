@@ -3,17 +3,15 @@ import Kingfisher
 
 extension ImageDetail {
     struct ImageViewData: ImageDetailComponentData {
-        let imageUrl: String
+        let imageUrl: URL
     }
     
     final class ImageView: UIImageView, ImageDetailComponent {
         typealias ViewData = ImageViewData
         
         func update(viewData: ViewData) {
-            guard let url = URL(string: viewData.imageUrl) else { return }
-            
             self.kf.setImage(
-                with: url,
+                with: viewData.imageUrl,
                 placeholder: Image.loadingImage
             ) { [weak self] completion in
                 guard let self = self else { return }
